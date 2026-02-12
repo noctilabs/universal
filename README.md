@@ -218,40 +218,20 @@ yarn dev
 
 ### Event Sync Workflow
 
-The event sync workflow creates Medusa products from Sanity events and supports optional inventory tracking and admin notifications.
+Creates Medusa products from Sanity events with optional inventory tracking and notifications.
 
-#### Workflow Steps
+**Workflow steps:**
+1. Create product/variant in Medusa with price
+2. Link `medusaProductId` and `medusaVariantId` back to Sanity
+3. (Optional) Set inventory capacity to prevent overselling
+4. (Optional) Send admin notification email
 
-| Step | Required | Description |
-|------|----------|-------------|
-| 1. Create Product | ✅ | Creates product/variant in Medusa with price |
-| 2. Update Sanity | ✅ | Links `medusaProductId` and `medusaVariantId` back to Sanity event |
-| 3. Set Capacity | Optional | Inventory management – prevents overselling tickets |
-| 4. Send Notification | Optional | Email alerts to admins when events are synced |
+**API:** `POST /admin/sync-event`
 
-**Optional parameters:** `capacity`, `locationId`, `eventDate`, `notifyAdmins`
+**Required fields:** `eventId`, `title`, `slug`, `price`, `currency`
+**Optional fields:** `description`, `capacity`, `locationId`, `eventDate`, `notifyAdmins`
 
-#### API: POST /admin/sync-event
-
-**Request body:**
-```typescript
-{
-  eventId: string        // Sanity event document ID (required)
-  title: string          // Event title (required)
-  slug: string           // URL-friendly slug (required)
-  price: number          // Ticket price, e.g. 49.99 (required)
-  currency: string       // Currency code, default "usd" (required)
-  description?: string   // Event description
-  capacity?: number      // Max tickets (for inventory)
-  locationId?: string    // Sales location ID in Medusa
-  eventDate?: string     // ISO 8601 date string
-  notifyAdmins?: boolean // Send email notification (default: false)
-}
-```
-
-#### Quick Reference: cURL Examples
-
-**Minimal sync (no inventory):**
+**Example:**
 ```bash
 curl -X POST http://localhost:9000/admin/sync-event \
   -H "Authorization: Bearer YOUR_TOKEN" \
@@ -260,58 +240,22 @@ curl -X POST http://localhost:9000/admin/sync-event \
     "eventId": "event-abc123",
     "title": "My Event",
     "slug": "my-event",
-    "price": 49.99,
-    "currency": "usd"
-  }'
-```
-
-**Full sync (with inventory & notifications):**
-```bash
-curl -X POST http://localhost:9000/admin/sync-event \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "eventId": "event-abc123",
-    "title": "My Event",
-    "slug": "my-event",
-    "description": "Event description",
     "price": 49.99,
     "currency": "usd",
     "capacity": 500,
-    "locationId": "loc_default",
-    "eventDate": "2024-08-15T19:00:00Z",
     "notifyAdmins": true
   }'
 ```
 
-#### Rollback Behavior
+**Creating an Event:**
+1. Create Event in Sanity Studio (http://localhost:3333), publish
+2. Call `POST /admin/sync-event` with event data
+3. Event appears on storefront at http://localhost:8000/events
 
-The workflow uses compensation functions to rollback on failure:
-- **Step 1 fails** → No rollback
-- **Step 2 fails** → Delete product from Step 1
-- **Step 3 fails** → Delete inventory → Delete product
-- **Step 4 fails** → No rollback (notification is optional)
+### Adding Media
 
-#### Creating an Event
-
-1. **In Sanity Studio** (http://localhost:3333): Create Event document, fill details, publish
-2. **Sync to Medusa**: Call `POST /admin/sync-event` with event data (see cURL examples above)
-3. **View on Storefront**: Event appears at http://localhost:8000/events; "Get Tickets" links to Medusa product
-
-**Related files:** `backend/src/workflows/sync-event-to-product.ts`, `backend/src/workflows/steps/*.ts`, `backend/src/api/admin/sync-event/route.ts`
-
-### Adding Media (White Papers, Case Studies)
-
-1. **In Sanity Studio**:
-   - Create new Media document
-   - Select category (White Paper, Case Study, etc.)
-   - Upload file or add external URL
-   - Add featured image
-   - Publish
-
-2. **View on Storefront**:
-   - Media appears at http://localhost:8000/media
-   - Users can download/view content
+1. Create Media document in Sanity Studio with category, file, and featured image
+2. Publish — appears on storefront at http://localhost:8000/media
 
 ## 🛠️ Development
 
@@ -401,53 +345,14 @@ yarn deploy
 
 ## 🔧 Troubleshooting
 
-### Postgres Connection Error
+| Issue | Solution |
+|-------|----------|
+| **Database/Redis errors** | `docker-compose restart postgres` or `docker-compose restart redis` |
+| **Medusa build errors** | `cd backend && rm -rf .medusa && yarn build` |
+| **Sanity schema errors** | `rm -rf sanity/node_modules && yarn install` |
+| **Booking migration fails** | Only run `npx medusa db:migrate` — do not run `db:generate bookingModule` (booking package includes compiled migrations) |
 
-```bash
-# Restart Postgres
-docker-compose restart postgres
-
-# Check logs
-docker-compose logs postgres
-```
-
-### Redis Connection Error
-
-```bash
-# Restart Redis
-docker-compose restart redis
-```
-
-### Medusa Build Errors
-
-```bash
-cd backend
-rm -rf .medusa
-yarn build
-```
-
-### Yarn Version Mismatch
-
-This monorepo uses Yarn 4 (Berry) configured at the root via `.yarnrc.yml`. Do not add `.yarnrc.yml` files in individual workspaces. The root config uses `nmHoistingLimits: workspaces` to keep each workspace's dependencies together, which is required for Medusa plugins to resolve correctly.
-
-### Booking Migration Fails (Unexpected token 'async')
-
-This happens when `db:generate bookingModule` creates a new TypeScript migration that fails to load. **Fix:** Skip `db:generate` for the booking module—the package already includes the compiled migration. Run only:
-
-```bash
-cd backend
-npx medusa db:migrate
-```
-
-If you already ran `db:generate` and have the failing `.ts` file in `node_modules`, run `yarn install` to restore a clean state, then `npx medusa db:migrate`.
-
-### Sanity Schema Errors
-
-```bash
-# Reinstall from root
-rm -rf sanity/node_modules
-yarn install
-```
+**Note:** Yarn 4 is configured at root via `.yarnrc.yml`. Do not add `.yarnrc.yml` in individual workspaces.
 
 ## 📖 External Documentation
 
@@ -456,115 +361,25 @@ yarn install
 - [Sanity Documentation](https://www.sanity.io/docs)
 - [Booking Plugin](https://github.com/RSC-Labs/medusa-booking-system)
 
+## 📅 Booking System
+
+The platform includes a booking system for studio spaces, equipment rentals, and resource reservations, powered by [@rsc-labs/medusa-booking-system](https://github.com/RSC-Labs/medusa-booking-system).
+
+**Setup:** The booking plugin is already in `backend/package.json`. Run migrations during the Quick Start step — no additional configuration needed.
+
+**Admin Workflow:**
+1. Create resource in Sanity (pricing, images, capacity)
+2. Create matching resource in Medusa Admin (Booking System → Resources)
+3. Copy Medusa Resource ID into Sanity `medusaResourceId` field
+4. Set availability rules (Booking System → Availability Rules)
+
+**Storefront:** Browse resources at `/resources`, view details and pricing at `/resources/[slug]`, book with date/time selection.
+
+**Schema:** Sanity resource includes `title`, `slug`, `resourceType`, `description`, `featuredImage`, `hourlyRate`, `dailyRate`, `capacity`, `medusaResourceId`.
+
 ## 🤝 Contributing
 
 1. Create feature branch
 2. Make changes
 3. Test thoroughly
 4. Create pull request
-
-
-## 📅 Booking System
-
-The platform includes a **complete booking system** for managing studio spaces, equipment rentals, and resource reservations, powered by [@rsc-labs/medusa-booking-system](https://github.com/RSC-Labs/medusa-booking-system).
-
-### Architecture
-
-```
-Sanity CMS (Content) → Resource definitions, pricing, images
-         ↓
-Medusa Booking System → BookingResource, Availability rules, Cart, Orders
-         ↓
-Next.js Storefront → Browse resources, check availability, create bookings
-```
-
-### Features
-
-| Category | Capabilities |
-|----------|--------------|
-| **Studio Spaces** | Recording studios, rehearsal rooms, meeting rooms – hourly/daily rates, capacity tracking |
-| **Equipment Rentals** | Audio gear, instruments, cameras – quantity management, deposit support |
-| **Availability** | Time-based rules, priority scheduling, real-time availability checks |
-| **Booking Workflows** | Shopping cart for multiple bookings, dynamic pricing, resource allocation |
-
-### Resource Types
-
-| Type | Use Case | Pricing |
-|------|----------|---------|
-| Studio Space | General studio | Hourly/Daily |
-| Recording Studio | Professional recording | Hourly/Daily |
-| Rehearsal Room | Band practice | Hourly |
-| Meeting Room | Meetings/events | Hourly |
-| Equipment | Rentals | Daily |
-
-### Installation & Setup
-
-The booking plugin is in `backend/package.json`. Run:
-
-```bash
-# From project root
-yarn install
-cd backend
-npx medusa db:migrate
-yarn dev
-```
-
-> **Note:** Do not run `db:generate bookingModule`—it creates a TypeScript migration that fails to load. The booking module includes its migrations in the package.
-
-### Sanity Resource Schema
-
-The `resource` schema supports: `title`, `slug`, `resourceType`, `shortDescription`, `description`, `featuredImage`, `gallery`, `hourlyRate`, `dailyRate`, `currency`, `capacity`, `features`, `technicalSpecs`, `equipmentDetails`, `medusaResourceId` (link to Medusa).
-
-### Admin Workflow
-
-1. **Create in Sanity** – Add bookable resource with pricing, images, capacity
-2. **Create in Medusa** – Booking System → Resources, create matching resource
-3. **Link** – Copy Medusa Resource ID into Sanity `medusaResourceId` field
-4. **Set availability** – Booking System → Availability Rules (day of week, start/end time, priority)
-5. **Manage bookings** – View, approve, refund, track utilization
-
-### Availability Rules
-
-In Medusa Admin → Booking System → Availability Rules:
-
-- **Resource**: Select the bookable resource
-- **Day of Week**: 0–6 (Sunday–Saturday) or empty for all days
-- **Start/End Time**: e.g. "09:00", "17:00"
-- **Priority**: Higher numbers override lower ones
-- **Is Active**: Enable/disable
-
-### Storefront Pages
-
-- **Resources listing:** http://localhost:8000/resources – Filter by type (`?type=studio_space`, `?type=equipment`)
-- **Resource detail:** http://localhost:8000/resources/[slug] – Full details, pricing, "Book This Resource" CTA
-
-### API Endpoints
-
-**Store API:**
-- `GET /store/booking/resources` – List resources
-- `GET /store/booking/resources/:id/availability?startDate=...&endDate=...` – Check availability
-- `POST /store/booking/cart` – Create booking cart
-- `POST /store/booking/cart/:cartId/bookings` – Add booking (resourceId, startTime, endTime)
-- `POST /store/booking/cart/:cartId/complete` – Complete checkout
-
-**Admin API:**
-- `POST /admin/booking/resources` – Create resource
-- `GET /admin/booking/bookings` – List bookings
-- `POST /admin/booking/availability-rules` – Create availability rule
-
-### Booking Flow
-
-1. User browses resources → `/resources`
-2. Clicks resource → `/resources/[slug]`
-3. Clicks "Book This Resource"
-4. Selects date/time, checks availability
-5. Adds to booking cart
-6. Proceeds to checkout
-7. Payment → Booking confirmed
-
-### Troubleshooting
-
-- **Booking system not in Admin:** Run `npx medusa db:migrate`, restart Medusa
-- **Resource not available:** Ensure `medusaResourceId` in Sanity, resource exists in Medusa, availability rules configured
-- **Availability returns empty:** Verify rules exist, cover time range, `isActive: true`
-
