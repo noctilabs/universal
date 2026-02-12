@@ -1,0 +1,31 @@
+{
+  "name": "universal-sanity",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "schema:extract": "sanity schema extract",
+    "typegen": "node scripts/sync-queries.js && sanity schema extract && sanity typegen generate"
+  },
+  "dependencies": {
+    "@sanity/icons": "^3.5.0",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/vision": "^3.68.1",
+    "@universal/types": "file:../packages/types",
+    "groq": "^3.99.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.68.1",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "@types/styled-components": "^5.1.34",
+    "typescript": "^5.6.2"
+  }
+}

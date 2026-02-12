@@ -25,7 +25,10 @@
     "@medusajs/admin-sdk": "2.13.1",
     "@medusajs/cli": "2.13.1",
     "@medusajs/framework": "2.13.1",
-    "@medusajs/medusa": "2.13.1"
+    "@medusajs/medusa": "2.13.1",
+    "@rsc-labs/medusa-booking-system": "^0.0.2",
+    "@universal/sanity": "file:../packages/sanity",
+    "@universal/types": "file:../packages/types"
   },
   "devDependencies": {
     "@medusajs/test-utils": "2.13.1",
