@@ -12,5 +12,8 @@
     "build:types": "yarn workspace @universal/types run build",
     "build:sanity": "yarn workspace @universal/sanity run build",
     "build:sanity:typegen": "yarn workspace universal-sanity run typegen && cp sanity/sanity.types.ts packages/sanity/src/sanity.types.ts"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
   }
 }

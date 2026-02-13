@@ -25,10 +25,13 @@
     "@medusajs/admin-sdk": "2.13.1",
     "@medusajs/cli": "2.13.1",
     "@medusajs/framework": "2.13.1",
+    "@medusajs/icons": "2.13.1",
     "@medusajs/medusa": "2.13.1",
+    "@medusajs/ui": "4.1.1",
     "@rsc-labs/medusa-booking-system": "^0.0.2",
     "@universal/sanity": "file:../packages/sanity",
-    "@universal/types": "file:../packages/types"
+    "@universal/types": "file:../packages/types",
+    "posthog-node": "^5.24.15"
   },
   "devDependencies": {
     "@medusajs/test-utils": "2.13.1",
