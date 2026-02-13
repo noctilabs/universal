@@ -1,6 +1,7 @@
 {
   "name": "universal-monorepo",
   "private": true,
+  "packageManager": "yarn@4.12.0",
   "workspaces": [
     "packages/*",
     "backend",
@@ -14,6 +15,7 @@
     "build:sanity:typegen": "yarn workspace universal-sanity run typegen && cp sanity/sanity.types.ts packages/sanity/src/sanity.types.ts"
   },
   "devDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "typescript": "^5.9.3"
   }
 }
