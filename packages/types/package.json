@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "yarn exec tsc",
-    "clean": "rm -rf dist",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "prepare": "yarn build"
   },
   "devDependencies": {

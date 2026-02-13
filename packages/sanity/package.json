@@ -14,8 +14,8 @@
     }
   },
   "scripts": {
-    "build": "rm -rf dist && esbuild src/index.ts --bundle --platform=node --format=cjs --outfile=dist/index.cjs.js --external:@sanity/client --external:@sanity/image-url --external:@universal/types && esbuild src/index.ts --bundle --platform=node --format=esm --outfile=dist/index.js --external:@sanity/client --external:@sanity/image-url --external:@universal/types && tsc --emitDeclarationOnly",
-    "clean": "rm -rf dist",
+    "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && esbuild src/index.ts --bundle --platform=node --format=cjs --outfile=dist/index.cjs.js --external:@sanity/client --external:@sanity/image-url --external:@universal/types && esbuild src/index.ts --bundle --platform=node --format=esm --outfile=dist/index.js --external:@sanity/client --external:@sanity/image-url --external:@universal/types && tsc --emitDeclarationOnly",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "prepare": "yarn build"
   },
   "dependencies": {
