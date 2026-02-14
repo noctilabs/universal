@@ -11035,7 +11035,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/client@npm:^7.3.0, @sanity/client@npm:^7.6.0, @sanity/client@npm:^7.9.0":
+"@sanity/client@npm:^7.14.1, @sanity/client@npm:^7.3.0, @sanity/client@npm:^7.6.0, @sanity/client@npm:^7.9.0":
   version: 7.14.1
   resolution: "@sanity/client@npm:7.14.1"
   dependencies:
@@ -13418,25 +13418,25 @@ __metadata:
 
 "@universal/sanity@file:../packages/sanity::locator=medusa-next%40workspace%3Astorefront":
   version: 1.0.0
-  resolution: "@universal/sanity@file:../packages/sanity#../packages/sanity::hash=a7ba54&locator=medusa-next%40workspace%3Astorefront"
+  resolution: "@universal/sanity@file:../packages/sanity#../packages/sanity::hash=c764af&locator=medusa-next%40workspace%3Astorefront"
   dependencies:
     "@sanity/client": "npm:^6.24.2"
     "@sanity/image-url": "npm:^1.1.0"
     "@universal/types": "file:../types"
     groq: "npm:^3.99.0"
-  checksum: 10c0/c4cfdf01a0e4fe5f5f47e09f3e0e1580ef0ecd917745e18bf1bfbffec6c5c37e2bbb9830731a520fee7abd754dfc8bcd906d80ee81a924e750ae361df7062ff3
+  checksum: 10c0/54a5baf9be0448ce17d196ff5fbe26c0135043a9d374496b7c139b981b5ac4e979b33b9b75498485507a0f213405fb9768e3cf9cf8cef6f9fffc78521c27eee3
   languageName: node
   linkType: hard
 
 "@universal/sanity@file:../packages/sanity::locator=universal%40workspace%3Abackend":
   version: 1.0.0
-  resolution: "@universal/sanity@file:../packages/sanity#../packages/sanity::hash=a7ba54&locator=universal%40workspace%3Abackend"
+  resolution: "@universal/sanity@file:../packages/sanity#../packages/sanity::hash=c764af&locator=universal%40workspace%3Abackend"
   dependencies:
     "@sanity/client": "npm:^6.24.2"
     "@sanity/image-url": "npm:^1.1.0"
     "@universal/types": "file:../types"
     groq: "npm:^3.99.0"
-  checksum: 10c0/c4cfdf01a0e4fe5f5f47e09f3e0e1580ef0ecd917745e18bf1bfbffec6c5c37e2bbb9830731a520fee7abd754dfc8bcd906d80ee81a924e750ae361df7062ff3
+  checksum: 10c0/54a5baf9be0448ce17d196ff5fbe26c0135043a9d374496b7c139b981b5ac4e979b33b9b75498485507a0f213405fb9768e3cf9cf8cef6f9fffc78521c27eee3
   languageName: node
   linkType: hard
 
@@ -13455,43 +13455,43 @@ __metadata:
 
 "@universal/types@file:../packages/types::locator=medusa-next%40workspace%3Astorefront":
   version: 1.0.0
-  resolution: "@universal/types@file:../packages/types#../packages/types::hash=1a9087&locator=medusa-next%40workspace%3Astorefront"
-  checksum: 10c0/e4fff8c32661de46157358a6b0cc3984efcf1aa6c4a67a03ce0868ab471bd55122616ee9e5786ffe46794663ecbf8206526053afa362edd20fa39424dae0742c
+  resolution: "@universal/types@file:../packages/types#../packages/types::hash=86d770&locator=medusa-next%40workspace%3Astorefront"
+  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
   languageName: node
   linkType: hard
 
 "@universal/types@file:../packages/types::locator=universal%40workspace%3Abackend":
   version: 1.0.0
-  resolution: "@universal/types@file:../packages/types#../packages/types::hash=1a9087&locator=universal%40workspace%3Abackend"
-  checksum: 10c0/e4fff8c32661de46157358a6b0cc3984efcf1aa6c4a67a03ce0868ab471bd55122616ee9e5786ffe46794663ecbf8206526053afa362edd20fa39424dae0742c
+  resolution: "@universal/types@file:../packages/types#../packages/types::hash=86d770&locator=universal%40workspace%3Abackend"
+  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
   languageName: node
   linkType: hard
 
 "@universal/types@file:../packages/types::locator=universal-sanity%40workspace%3Asanity":
   version: 1.0.0
-  resolution: "@universal/types@file:../packages/types#../packages/types::hash=1a9087&locator=universal-sanity%40workspace%3Asanity"
-  checksum: 10c0/e4fff8c32661de46157358a6b0cc3984efcf1aa6c4a67a03ce0868ab471bd55122616ee9e5786ffe46794663ecbf8206526053afa362edd20fa39424dae0742c
+  resolution: "@universal/types@file:../packages/types#../packages/types::hash=86d770&locator=universal-sanity%40workspace%3Asanity"
+  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
   languageName: node
   linkType: hard
 
-"@universal/types@file:../types::locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Da7ba54%26locator%3Dmedusa-next%2540workspace%253Astorefront":
+"@universal/types@file:../types::locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Dc764af%26locator%3Dmedusa-next%2540workspace%253Astorefront":
   version: 1.0.0
-  resolution: "@universal/types@file:../types#../types::hash=1a9087&locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Da7ba54%26locator%3Dmedusa-next%2540workspace%253Astorefront"
-  checksum: 10c0/e4fff8c32661de46157358a6b0cc3984efcf1aa6c4a67a03ce0868ab471bd55122616ee9e5786ffe46794663ecbf8206526053afa362edd20fa39424dae0742c
+  resolution: "@universal/types@file:../types#../types::hash=86d770&locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Dc764af%26locator%3Dmedusa-next%2540workspace%253Astorefront"
+  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
   languageName: node
   linkType: hard
 
-"@universal/types@file:../types::locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Da7ba54%26locator%3Duniversal%2540workspace%253Abackend":
+"@universal/types@file:../types::locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Dc764af%26locator%3Duniversal%2540workspace%253Abackend":
   version: 1.0.0
-  resolution: "@universal/types@file:../types#../types::hash=1a9087&locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Da7ba54%26locator%3Duniversal%2540workspace%253Abackend"
-  checksum: 10c0/e4fff8c32661de46157358a6b0cc3984efcf1aa6c4a67a03ce0868ab471bd55122616ee9e5786ffe46794663ecbf8206526053afa362edd20fa39424dae0742c
+  resolution: "@universal/types@file:../types#../types::hash=86d770&locator=%40universal%2Fsanity%40file%3A..%2Fpackages%2Fsanity%23..%2Fpackages%2Fsanity%3A%3Ahash%3Dc764af%26locator%3Duniversal%2540workspace%253Abackend"
+  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
   languageName: node
   linkType: hard
 
 "@universal/types@file:../types::locator=%40universal%2Fsanity%40workspace%3Apackages%2Fsanity":
   version: 1.0.0
-  resolution: "@universal/types@file:../types#../types::hash=1a9087&locator=%40universal%2Fsanity%40workspace%3Apackages%2Fsanity"
-  checksum: 10c0/e4fff8c32661de46157358a6b0cc3984efcf1aa6c4a67a03ce0868ab471bd55122616ee9e5786ffe46794663ecbf8206526053afa362edd20fa39424dae0742c
+  resolution: "@universal/types@file:../types#../types::hash=86d770&locator=%40universal%2Fsanity%40workspace%3Apackages%2Fsanity"
+  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
   languageName: node
   linkType: hard
 
@@ -27535,6 +27535,7 @@ __metadata:
     "@medusajs/test-utils": "npm:2.13.1"
     "@medusajs/ui": "npm:4.1.1"
     "@rsc-labs/medusa-booking-system": "npm:^0.0.2"
+    "@sanity/client": "npm:^7.14.1"
     "@swc/core": "npm:^1.7.28"
     "@swc/jest": "npm:^0.2.36"
     "@types/jest": "npm:^29.5.13"
