@@ -11983,7 +11983,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/client@npm:^7.13.0, @sanity/client@npm:^7.13.2, @sanity/client@npm:^7.2.1, @sanity/client@npm:^7.3.0, @sanity/client@npm:^7.6.0, @sanity/client@npm:^7.9.0":
+"@sanity/client@npm:^7.14.1, @sanity/client@npm:^7.3.0, @sanity/client@npm:^7.6.0, @sanity/client@npm:^7.9.0":
   version: 7.14.1
   resolution: "@sanity/client@npm:7.14.1"
   dependencies:
@@ -30007,6 +30007,7 @@ __metadata:
     "@medusajs/test-utils": "npm:2.13.1"
     "@medusajs/ui": "npm:4.1.1"
     "@rsc-labs/medusa-booking-system": "npm:^0.0.2"
+    "@sanity/client": "npm:^7.14.1"
     "@swc/core": "npm:^1.7.28"
     "@swc/jest": "npm:^0.2.36"
     "@types/jest": "npm:^29.5.13"

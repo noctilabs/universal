@@ -1,6 +1,6 @@
-import { loadEnv, defineConfig } from '@medusajs/framework/utils'
+import { loadEnv, defineConfig } from "@medusajs/framework/utils";
 
-loadEnv(process.env.NODE_ENV || 'development', process.cwd())
+loadEnv(process.env.NODE_ENV || "development", process.cwd());
 
 module.exports = defineConfig({
   projectConfig: {
@@ -12,7 +12,7 @@ module.exports = defineConfig({
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
-    }
+    },
   },
   modules: [
     {
@@ -55,11 +55,25 @@ module.exports = defineConfig({
         ],
       },
     },
+    {
+      resolve: "./src/modules/sanity",
+      options: {
+        api_token: process.env.SANITY_API_TOKEN || "",
+        project_id: process.env.SANITY_PROJECT_ID || "",
+        api_version: process.env.SANITY_API_VERSION || "",
+        dataset: process.env.SANITY_DATASET || "production",
+        studio_url:
+          process.env.SANITY_STUDIO_URL || "http://localhost:3000/studio",
+        type_map: {
+          booking_resource: "event",
+        },
+      },
+    },
   ],
   plugins: [
     {
       resolve: "@rsc-labs/medusa-booking-system",
-      options: {}
-    }
-  ]
-})
+      options: {},
+    },
+  ],
+});
