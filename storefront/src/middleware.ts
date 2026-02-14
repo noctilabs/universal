@@ -119,6 +119,10 @@ export async function middleware(request: NextRequest) {
   const urlHasCountryCode =
     countryCode && request.nextUrl.pathname.split("/")[1].includes(countryCode)
 
+  if (request.nextUrl.pathname.startsWith("/studio")) {
+    return NextResponse.next()
+  }
+
   // if one of the country codes is in the url and the cache id is set, return next
   if (urlHasCountryCode && cacheIdCookie) {
     return NextResponse.next()
