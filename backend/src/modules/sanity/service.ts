@@ -43,7 +43,7 @@ class SanityModuleService {
     this.client = createClient({
       projectId: options.project_id,
       dataset: options.dataset,
-      apiVersion: options.api_version,
+      apiVersion: options.api_version || "2024-01-01",
       token: options.api_token,
     });
     this.studioUrl = options.studio_url;

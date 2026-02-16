@@ -1,4 +1,5 @@
 import { createStep, StepResponse } from "@medusajs/framework/workflows-sdk"
+import { createClient } from "@sanity/client"
 
 type UpdateSanityEventInput = {
   eventId: string
@@ -9,8 +10,7 @@ type UpdateSanityEventInput = {
 export const updateSanityEventStep = createStep(
   "update-sanity-event",
   async (input: UpdateSanityEventInput, { container }) => {
-    const { createSanityClient } = await import("@universal/sanity")
-    const sanityClient = createSanityClient({
+    const sanityClient = createClient({
       projectId: process.env.SANITY_PROJECT_ID || "",
       dataset: process.env.SANITY_DATASET || "production",
       token: process.env.SANITY_API_TOKEN,

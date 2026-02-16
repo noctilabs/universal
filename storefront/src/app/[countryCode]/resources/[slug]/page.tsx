@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getResource } from "@lib/sanity/booking-queries"
+import { getResource } from "../../../../sanity/lib/fetch"
 import Link from "next/link"
 
 type Props = {

@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getEvent } from "@lib/sanity/queries"
+import { getEvent } from "../../../../sanity/lib/fetch"
 import Link from "next/link"
 
 type Props = {

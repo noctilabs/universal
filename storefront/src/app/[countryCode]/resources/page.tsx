@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import { getResources } from "@lib/sanity/booking-queries"
+import { getResources } from "../../../sanity/lib/fetch"
 import Link from "next/link"
 
 export const metadata: Metadata = {
