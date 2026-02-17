@@ -5,8 +5,9 @@ import { retrieveCustomer } from "@lib/data/customer"
 import { getBaseURL } from "@lib/util/env"
 import { StoreCartShippingOption } from "@medusajs/types"
 import CartMismatchBanner from "@modules/layout/components/cart-mismatch-banner"
-import Footer from "@modules/layout/templates/footer"
-import Nav from "@modules/layout/templates/nav"
+import ConditionalFooter from "@modules/layout/components/conditional-footer"
+import LanguageSelectorLanding from "@modules/layout/components/language-selector-landing"
+import LandingBottomNav from "@modules/layout/components/landing-bottom-nav"
 import FreeShippingPriceNudge from "@modules/shipping/components/free-shipping-price-nudge"
 
 export const metadata: Metadata = {
@@ -26,11 +27,11 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
 
   return (
     <>
-      <Nav />
+      <LanguageSelectorLanding />
+      <LandingBottomNav />
       {customer && cart && (
         <CartMismatchBanner customer={customer} cart={cart} />
       )}
-
       {cart && (
         <FreeShippingPriceNudge
           variant="popup"
@@ -38,8 +39,9 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
           shippingOptions={shippingOptions}
         />
       )}
-      {props.children}
-      <Footer />
+      <main className="pb-20 small:pb-24">
+        <ConditionalFooter>{props.children}</ConditionalFooter>
+      </main>
     </>
   )
 }

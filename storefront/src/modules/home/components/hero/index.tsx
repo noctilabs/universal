@@ -1,34 +1,38 @@
-import { Github } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import Image from "next/image"
 
+/**
+ * Full-viewport hero with industrial/gallery background.
+ * Hero image: set NEXT_PUBLIC_HERO_IMAGE_URL or use default placeholder.
+ */
 const Hero = () => {
+  const heroSrc =
+    process.env.NEXT_PUBLIC_HERO_IMAGE_URL ||
+    "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1920&q=80"
+
+  const isExternal = heroSrc.startsWith("http")
+
   return (
-    <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
-      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
-        <span>
-          <Heading
-            level="h1"
-            className="text-3xl leading-10 text-ui-fg-base font-normal"
-          >
-            Ecommerce Starter Template
-          </Heading>
-          <Heading
-            level="h2"
-            className="text-3xl leading-10 text-ui-fg-subtle font-normal"
-          >
-            Powered by Medusa and Next.js
-          </Heading>
-        </span>
-        <a
-          href="https://github.com/medusajs/nextjs-starter-medusa"
-          target="_blank"
-        >
-          <Button variant="secondary">
-            View on GitHub
-            <Github />
-          </Button>
-        </a>
-      </div>
+    <div className="relative min-h-screen w-full">
+      {isExternal ? (
+        <Image
+          src={heroSrc}
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+          unoptimized={isExternal}
+        />
+      ) : (
+        <Image
+          src={heroSrc}
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      )}
     </div>
   )
 }
