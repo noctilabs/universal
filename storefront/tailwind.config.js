@@ -69,6 +69,16 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        "neue-haas": [
+          "Neue Haas Grotesk Display Std",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+      },
+      fontWeight: {
+        "neue-medium": "450",
       },
       keyframes: {
         ring: {

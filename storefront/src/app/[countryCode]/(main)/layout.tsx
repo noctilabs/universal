@@ -6,9 +6,12 @@ import { getBaseURL } from "@lib/util/env"
 import { StoreCartShippingOption } from "@medusajs/types"
 import CartMismatchBanner from "@modules/layout/components/cart-mismatch-banner"
 import ConditionalFooter from "@modules/layout/components/conditional-footer"
-import LanguageSelectorLanding from "@modules/layout/components/language-selector-landing"
-import LandingBottomNav from "@modules/layout/components/landing-bottom-nav"
+import LanguageSelectorLanding from "@modules/landing/components/language-selector-landing"
+import LayoutWithConditionalNav from "@modules/layout/components/layout-with-conditional-nav"
+import MainWithConditionalPadding from "@modules/layout/components/main-with-conditional-padding"
+import { LandingLocaleProvider } from "@modules/landing/context/landing-locale-context"
 import FreeShippingPriceNudge from "@modules/shipping/components/free-shipping-price-nudge"
+import Footer from "@modules/layout/templates/footer"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
@@ -26,9 +29,8 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
   }
 
   return (
-    <>
+    <LandingLocaleProvider>
       <LanguageSelectorLanding />
-      <LandingBottomNav />
       {customer && cart && (
         <CartMismatchBanner customer={customer} cart={cart} />
       )}
@@ -39,9 +41,11 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
           shippingOptions={shippingOptions}
         />
       )}
-      <main className="pb-20 small:pb-24">
-        <ConditionalFooter>{props.children}</ConditionalFooter>
-      </main>
-    </>
+      <MainWithConditionalPadding>
+        <LayoutWithConditionalNav>
+          <ConditionalFooter footer={<Footer />}>{props.children}</ConditionalFooter>
+        </LayoutWithConditionalNav>
+      </MainWithConditionalPadding>
+    </LandingLocaleProvider>
   )
 }

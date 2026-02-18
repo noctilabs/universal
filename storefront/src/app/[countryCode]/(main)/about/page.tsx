@@ -1,8 +1,8 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "About | Universal Studio",
-  description: "About Universal Studio.",
+  title: "About | Universal",
+  description: "About Universal.",
 }
 
 /**
@@ -15,7 +15,7 @@ export default function AboutPage() {
         About
       </h1>
       <p className="text-base-regular text-grey-70 max-w-xl">
-        Universal Studio — placeholder. Add your content here or connect to
+        Universal — placeholder. Add your content here or connect to
         Sanity.
       </p>
     </div>

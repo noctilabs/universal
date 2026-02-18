@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
-import Hero from "@modules/home/components/hero"
+import Hero from "@modules/landing/components/hero"
 
 export const metadata: Metadata = {
-  title: "Universal Studio",
+  title: "Universal",
   description: "Studio and venue platform for events, media, and bookings.",
 }
 
