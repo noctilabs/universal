@@ -3,13 +3,13 @@ import BottomNav from "@modules/common/components/bottom-nav"
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="hero-shell">
       <Image
         src="/images/universalLanding.png"
         alt="Universal space"
         fill
         priority
-        className="object-cover object-center"
+        className="hero-image"
         sizes="100vw"
       />
       <BottomNav variant="inside-hero" />

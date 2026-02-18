@@ -93,12 +93,9 @@ const AboutContent = () => {
   const t = getAboutTranslations(locale)
 
   return (
-    <div
-      className="relative min-h-screen w-full overflow-hidden bg-[#CDCDCD] outline outline-1 outline-black outline-offset-[-1px]"
-      style={{ minHeight: "100dvh" }}
-    >
-      <div className="mx-auto flex min-h-screen w-full max-w-[900px] flex-col justify-center px-6 py-24 small:py-32">
-        <p className="w-full text-center font-neue-haas text-[40px] font-[450] text-black break-words">
+    <div className="about-page-shell" style={{ minHeight: "100dvh" }}>
+      <div className="about-content-inner">
+        <p className="about-description">
           {paragraphWithHoverableBrand(t.paragraph1)}
           <br />
           {paragraphWithHoverableBrand(t.paragraph2)}

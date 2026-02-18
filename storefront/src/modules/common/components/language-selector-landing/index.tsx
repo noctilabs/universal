@@ -16,9 +16,7 @@ const LanguageSelectorLanding = () => {
   const handleSelectEng = () => setLocale("en")
 
   return (
-    <div
-      className={`fixed top-10 left-1/2 -translate-x-1/2 z-50 font-neue-haas font-[450] text-[18px] leading-[18px] uppercase ${textClass}`}
-    >
+    <div className={`language-selector ${textClass}`}>
       <div className="flex items-center gap-1">
         {isSpanish ? (
           <>

@@ -27,20 +27,17 @@ const BottomNav = ({ variant = "fixed" }: BottomNavProps) => {
   const t = getLandingTranslations(locale)
   const isInsideHero = variant === "inside-hero"
   const wrapperClass = isInsideHero
-    ? "absolute bottom-0 left-0 right-0 z-10 w-full flex justify-center px-4 small:px-6 pb-10"
-    : "fixed bottom-0 left-0 right-0 z-50 w-full flex justify-center px-4 small:px-6 pb-10"
-  const barClass =
-    "w-[479px] max-w-[calc(100vw-2rem)] h-[60px] bg-white opacity-80 flex items-center gap-[62.66px] px-[30px]"
+    ? "nav-wrapper-inside-hero"
+    : "nav-wrapper-fixed"
 
   const basePath =
     (pathname?.replace(/^\/[a-z]{2}(?:\/|$)/i, "/").replace(/\/$/, "") ?? "/") ||
     "/"
-  const linkClass =
-    "font-neue-haas font-[450] text-[18px] leading-[20.25px] text-black hover:opacity-70 transition-opacity"
+  const linkClass = "nav-link"
 
   return (
     <div className={wrapperClass}>
-      <div className={barClass}>
+      <div className="nav-bar">
         <LocalizedClientLink
           href="/"
           className="flex items-center hover:opacity-70 transition-opacity shrink-0"

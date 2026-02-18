@@ -120,4 +120,48 @@ body::-webkit-scrollbar {
   .text-3xl-semi {
     @apply text-[32px] leading-[44px] font-semibold;
   }
+
+  /* About page */
+  .about-page-shell {
+    @apply relative min-h-screen w-full overflow-hidden bg-[#CDCDCD] outline outline-1 outline-black outline-offset-[-1px];
+  }
+  .about-content-inner {
+    @apply mx-auto flex min-h-screen w-full max-w-[900px] flex-col items-center justify-center px-6 py-24 small:py-32;
+  }
+  .about-description {
+    @apply text-center font-neue-haas text-[40px] font-normal text-black break-words;
+    position: absolute;
+    align-items: center;
+    width: 900px;
+    height: 230px;
+    line-height: 45px;
+    letter-spacing: 0;
+  }
+
+  /* Landing hero */
+  .hero-shell {
+    @apply relative h-screen w-full overflow-hidden;
+  }
+  .hero-image {
+    @apply object-cover object-center;
+  }
+
+  /* Language selector (main pages) */
+  .language-selector {
+    @apply fixed top-10 left-1/2 -translate-x-1/2 z-50 font-neue-haas font-[450] text-[18px] leading-[18px] uppercase;
+  }
+
+  /* Bottom nav bar and links */
+  .nav-bar {
+    @apply w-[479px] max-w-[calc(100vw-2rem)] h-[60px] bg-white opacity-80 flex items-center gap-[62.66px] px-[30px];
+  }
+  .nav-link {
+    @apply font-neue-haas font-[450] text-[18px] leading-[20.25px] text-black hover:opacity-70 transition-opacity;
+  }
+  .nav-wrapper-inside-hero {
+    @apply absolute bottom-0 left-0 right-0 z-10 w-full flex justify-center px-4 small:px-6 pb-10;
+  }
+  .nav-wrapper-fixed {
+    @apply fixed bottom-0 left-0 right-0 z-50 w-full flex justify-center px-4 small:px-6 pb-10;
+  }
 }
