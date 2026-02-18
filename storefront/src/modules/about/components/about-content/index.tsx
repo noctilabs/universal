@@ -6,6 +6,7 @@ import { useLandingLocale } from "@modules/landing/context/landing-locale-contex
 import { getAboutTranslations } from "@modules/about/data/about-translations"
 
 const LOGO_ABOUT_SRC = "/images/universalLogoAbout.svg"
+const LOGO_HOTEL_SRC = "/images/universalHotelAbout.svg"
 
 /**
  * Renders the word "Universal" and replaces it with the about logo on hover.
@@ -40,13 +41,47 @@ function HoverableUniversal() {
 }
 
 /**
- * Splits text by "Universal" and returns React nodes with HoverableUniversal for each match.
+ * Renders the word "Hotel" and replaces it with the hotel image on hover (image sits on the word).
+ */
+function HoverableHotel({ label }: { label: string }) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <span
+      className="relative inline-block cursor-default align-baseline overflow-visible"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <span className={isHovered ? "invisible" : undefined}>{label}</span>
+      <span
+        className={`absolute left-1/2 top-1/2 z-50 h-[174px] w-[246px] -translate-x-1/2 -translate-y-1/2 ${
+          isHovered ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={!isHovered}
+      >
+        <Image
+          src={LOGO_HOTEL_SRC}
+          alt="Hotel"
+          width={246}
+          height={174}
+          className="h-[174px] w-[246px] object-contain drop-shadow-md"
+          priority
+        />
+      </span>
+    </span>
+  )
+}
+
+/**
+ * Splits text by "Universal" and "Hotel" and returns React nodes with hoverable components for each match.
  */
 function paragraphWithHoverableBrand(text: string): React.ReactNode[] {
-  const parts = text.split(/(Universal)/g)
-  return parts.map((part, i) =>
-    part === "Universal" ? <HoverableUniversal key={i} /> : part
-  )
+  const parts = text.split(/(Universal|Hotel)/g)
+  return parts.map((part, i) => {
+    if (part === "Universal") return <HoverableUniversal key={`u-${i}`} />
+    if (part === "Hotel") return <HoverableHotel key={`h-${i}`} label={part} />
+    return part
+  })
 }
 
 /**
