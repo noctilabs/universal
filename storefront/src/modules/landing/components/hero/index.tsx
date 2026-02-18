@@ -1,5 +1,5 @@
 import Image from "next/image"
-import LandingBottomNav from "@modules/landing/components/landing-bottom-nav"
+import BottomNav from "@modules/common/components/bottom-nav"
 
 const Hero = () => {
   return (
@@ -12,7 +12,7 @@ const Hero = () => {
         className="object-cover object-center"
         sizes="100vw"
       />
-      <LandingBottomNav variant="inside-hero" />
+      <BottomNav variant="inside-hero" />
     </div>
   )
 }

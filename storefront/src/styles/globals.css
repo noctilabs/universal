@@ -2,6 +2,17 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Hide scrollbar site-wide (scroll still works) */
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

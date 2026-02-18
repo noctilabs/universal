@@ -1,7 +1,7 @@
 "use client"
 
 import { useParams, usePathname } from "next/navigation"
-import LandingBottomNav from "@modules/landing/components/landing-bottom-nav"
+import BottomNav from "@modules/common/components/bottom-nav"
 
 type LayoutWithConditionalNavProps = {
   children: React.ReactNode
@@ -22,7 +22,7 @@ const LayoutWithConditionalNav = ({ children }: LayoutWithConditionalNavProps) =
   return (
     <>
       {children}
-      {!isHome && <LandingBottomNav variant="fixed" />}
+      {!isHome && <BottomNav variant="fixed" />}
     </>
   )
 }

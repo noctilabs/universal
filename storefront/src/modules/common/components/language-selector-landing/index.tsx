@@ -3,8 +3,9 @@
 import { useLandingLocale } from "@modules/landing/context/landing-locale-context"
 
 /**
- * Language selector per Figma: 18px, Neue Haas Grotesk Display Std, fontWeight 450, uppercase, lineHeight 18.
+ * Language selector: 18px, Neue Haas Grotesk Display Std, fontWeight 450, uppercase, lineHeight 18.
  * Toggles landing language in place (no navigation); preference is stored in client state and localStorage.
+ * Used across all (main) pages.
  */
 const LanguageSelectorLanding = () => {
   const { locale, setLocale } = useLandingLocale()

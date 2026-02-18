@@ -1,23 +1,16 @@
 import { Metadata } from "next"
 
+import AboutContent from "@modules/about/components/about-content"
+
 export const metadata: Metadata = {
   title: "About | Universal",
-  description: "About Universal.",
+  description:
+    "Universal is a multidisciplinary space and home for contemporary culture in Montevideo.",
 }
 
 /**
- * Placeholder About page. Replace with Sanity-driven or static content as needed.
+ * About page: grey full-viewport layout, centered description. Nav and language selector from (main) layout.
  */
 export default function AboutPage() {
-  return (
-    <div className="content-container py-12 small:py-24">
-      <h1 className="text-2xl small:text-3xl font-normal text-grey-90 mb-6">
-        About
-      </h1>
-      <p className="text-base-regular text-grey-70 max-w-xl">
-        Universal — placeholder. Add your content here or connect to
-        Sanity.
-      </p>
-    </div>
-  )
+  return <AboutContent />
 }
