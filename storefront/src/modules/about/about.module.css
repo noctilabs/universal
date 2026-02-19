@@ -1,0 +1,223 @@
+/* About page specific styles */
+
+/* Montevideo hover overlay container */
+.about-montevideo-overlay-container {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Montevideo hover overlay black background */
+.about-montevideo-overlay-bg {
+  display: block;
+  width: 135.68px;
+  height: 60px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 0;
+  background: black;
+}
+
+/* Montevideo hover overlay time text */
+.about-montevideo-time {
+  position: absolute;
+  left: 0;
+  top: 16.5px;
+  right: 0;
+  width: 100%;
+  height: 27px;
+  z-index: 1;
+  text-align: center;
+  color: #cdcdcd;
+  font-size: 24px;
+  font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 450;
+  line-height: 27px;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image section */
+.about-image-section {
+  position: relative;
+  width: 100%;
+  max-width: 1362px;
+  margin: 0 auto;
+  padding: 4rem 1rem 0;
+}
+
+.about-landing-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-image-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: calc(4% + 4px);
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.about-image-icon-inner {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  background: var(--Schemes-On-Surface, #1d1b20);
+}
+
+/* Description section below image */
+.about-description-section {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.about-description-text {
+  color: black;
+  font-size: 28px;
+  font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 450;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+/* Footer section */
+.about-footer {
+  width: 100%;
+  background: black;
+  padding: 4rem 2.5rem 2rem;
+  margin-top: 2rem;
+}
+
+.about-footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-footer-left {
+  display: flex;
+  align-items: flex-start;
+}
+
+.about-footer-center {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.about-footer-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.about-footer-contact {
+  color: white;
+  font-size: 24px;
+  font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 450;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+
+.about-footer-email {
+  color: white;
+  font-size: 24px;
+  font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 24px;
+  word-wrap: break-word;
+  text-decoration: none;
+}
+
+.about-footer-email:hover {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.about-footer-address {
+  color: white;
+  font-size: 24px;
+  font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 450;
+  line-height: 24px;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.about-footer-instagram {
+  color: white;
+  font-size: 24px;
+  font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 450;
+  line-height: 24px;
+  word-wrap: break-word;
+  text-decoration: none;
+}
+
+.about-footer-instagram:hover {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.about-footer-bottom {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-footer-copyright {
+  color: white;
+  font-size: 18px;
+  font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 450;
+  line-height: 18px;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .about-footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-footer-center,
+  .about-footer-right {
+    justify-content: flex-start;
+  }
+
+  .about-footer-address {
+    text-align: left;
+  }
+
+  .about-description-text {
+    font-size: 24px;
+  }
+
+  .about-footer-contact,
+  .about-footer-email,
+  .about-footer-address,
+  .about-footer-instagram {
+    font-size: 20px;
+  }
+}

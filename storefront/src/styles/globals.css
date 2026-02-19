@@ -124,6 +124,7 @@ body::-webkit-scrollbar {
   /* About page */
   .about-page-shell {
     @apply relative min-h-screen w-full overflow-hidden bg-[#CDCDCD] outline outline-1 outline-black outline-offset-[-1px];
+    min-height: 100dvh;
   }
   .about-content-inner {
     @apply mx-auto flex min-h-screen w-full max-w-[900px] flex-col items-center justify-center px-6 py-24 small:py-32;
@@ -134,7 +135,7 @@ body::-webkit-scrollbar {
     align-items: center;
     width: 900px;
     height: 230px;
-    line-height: 45px;
+    line-height: 48px;
     letter-spacing: 0;
   }
 

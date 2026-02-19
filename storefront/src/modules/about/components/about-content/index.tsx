@@ -1,12 +1,14 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLandingLocale } from "@modules/landing/context/landing-locale-context"
 import { getAboutTranslations } from "@modules/about/data/about-translations"
+import styles from "@modules/about/about.module.css"
 
 const LOGO_ABOUT_SRC = "/images/universalLogoAbout.svg"
 const LOGO_HOTEL_SRC = "/images/universalHotelAbout.svg"
+const GLOBE_ABOUT_SRC = "/images/universalGlobeAbout.svg"
 
 /**
  * Renders the word "Universal" and replaces it with the about logo on hover.
@@ -29,6 +31,38 @@ function HoverableUniversal() {
       >
         <Image
           src={LOGO_ABOUT_SRC}
+          alt="Universal"
+          width={151}
+          height={80}
+          className="h-[80px] w-[151px] object-contain drop-shadow-md"
+          priority
+        />
+      </span>
+    </span>
+  )
+}
+
+/**
+ * Renders the word "Universal" and replaces it with the globe image on hover.
+ */
+function HoverableUniversalGlobe() {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <span
+      className="relative inline-block cursor-default align-baseline"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <span className={isHovered ? "invisible" : undefined}>Universal</span>
+      <span
+        className={`absolute left-0 top-0 flex h-full w-full items-center justify-center ${
+          isHovered ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={!isHovered}
+      >
+        <Image
+          src={GLOBE_ABOUT_SRC}
           alt="Universal"
           width={151}
           height={80}
@@ -73,13 +107,70 @@ function HoverableHotel({ label }: { label: string }) {
 }
 
 /**
- * Splits text by "Universal" and "Hotel" and returns React nodes with hoverable components for each match.
+ * Returns the current local time formatted as HH:MM:SS.
  */
-function paragraphWithHoverableBrand(text: string): React.ReactNode[] {
-  const parts = text.split(/(Universal|Hotel)/g)
+function getLocalTimeString(): string {
+  const now = new Date()
+  return now.toLocaleTimeString(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  })
+}
+
+/**
+ * Renders the word "Montevideo" and shows a clock-style overlay with the user's local time on hover.
+ */
+function HoverableMontevideo({ label }: { label: string }) {
+  const [isHovered, setIsHovered] = useState(false)
+  const [localTime, setLocalTime] = useState<string>(() => getLocalTimeString())
+
+  useEffect(() => {
+    setLocalTime(getLocalTimeString())
+    const interval = setInterval(() => setLocalTime(getLocalTimeString()), 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <span
+      className="relative inline-block cursor-default align-baseline overflow-visible"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <span>{label}</span>
+      <span
+        className={`absolute left-1/2 top-1/2 z-50 h-[60px] w-[136px] -translate-x-1/2 -translate-y-1/2 ${
+          isHovered ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={!isHovered}
+      >
+        <span className={styles["about-montevideo-overlay-container"]}>
+          <span className={styles["about-montevideo-overlay-bg"]} />
+          <span className={styles["about-montevideo-time"]}>{localTime}</span>
+        </span>
+      </span>
+    </span>
+  )
+}
+
+/**
+ * Splits text by "Universal", "Hotel" and "Montevideo" and returns React nodes with hoverable components for each match.
+ * @param text - The text to process
+ * @param useGlobeForUniversal - If true, uses the globe image for "Universal" instead of the logo
+ */
+function paragraphWithHoverableBrand(text: string, useGlobeForUniversal: boolean = false): React.ReactNode[] {
+  const parts = text.split(/(Universal|Hotel|Montevideo)/g)
   return parts.map((part, i) => {
-    if (part === "Universal") return <HoverableUniversal key={`u-${i}`} />
+    if (part === "Universal") {
+      return useGlobeForUniversal ? (
+        <HoverableUniversalGlobe key={`ug-${i}`} />
+      ) : (
+        <HoverableUniversal key={`u-${i}`} />
+      )
+    }
     if (part === "Hotel") return <HoverableHotel key={`h-${i}`} label={part} />
+    if (part === "Montevideo") return <HoverableMontevideo key={`m-${i}`} label={part} />
     return part
   })
 }
@@ -93,14 +184,54 @@ const AboutContent = () => {
   const t = getAboutTranslations(locale)
 
   return (
-    <div className="about-page-shell" style={{ minHeight: "100dvh" }}>
+    <div className="about-page-shell">
       <div className="about-content-inner">
         <p className="about-description">
           {paragraphWithHoverableBrand(t.paragraph1)}
           <br />
-          {paragraphWithHoverableBrand(t.paragraph2)}
+          {paragraphWithHoverableBrand(t.paragraph2, true)}
         </p>
       </div>
+      <div className={styles["about-image-section"]}>
+        <Image
+          src="/images/universalLanding.png"
+          alt="Universal space"
+          width={1362}
+          height={1090}
+          className={styles["about-landing-image"]}
+          priority={false}
+        />
+        <div className={styles["about-image-icon"]}>
+          <div className={styles["about-image-icon-inner"]} />
+        </div>
+      </div>
+      <div className={styles["about-description-section"]}>
+        <p className={styles["about-description-text"]}>{t.descriptionText}</p>
+      </div>
+      <footer className={styles["about-footer"]}>
+        <div className={styles["about-footer-content"]}>
+          <div className={styles["about-footer-left"]}>
+            <p className={styles["about-footer-contact"]}>
+              {t.contactText}
+              <br />
+              <a href={`mailto:${t.email}`} className={styles["about-footer-email"]}>
+                {t.email}
+              </a>
+            </p>
+          </div>
+          <div className={styles["about-footer-center"]}>
+            <p className={styles["about-footer-address"]}>{t.address}</p>
+          </div>
+          <div className={styles["about-footer-right"]}>
+            <a href="https://instagram.com" className={styles["about-footer-instagram"]}>
+              {t.instagram}
+            </a>
+          </div>
+        </div>
+        <div className={styles["about-footer-bottom"]}>
+          <p className={styles["about-footer-copyright"]}>{t.copyright}</p>
+        </div>
+      </footer>
     </div>
   )
 }
