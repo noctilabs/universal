@@ -4,10 +4,12 @@ import {
   transform,
   when,
 } from "@medusajs/framework/workflows-sdk"
-import { createEventProductStep } from "./steps/create-event-product"
-import { updateSanityEventStep } from "./steps/update-sanity-event"
-import { setEventCapacityStep } from "./steps/set-event-capacity"
-import { sendEventNotificationStep } from "./steps/send-event-notification"
+import {
+  createEventProductStep,
+  updateSanityEventStep,
+  setEventCapacityStep,
+  sendEventNotificationStep,
+} from "../steps"
 
 type SyncEventToProductInput = {
   eventId: string
