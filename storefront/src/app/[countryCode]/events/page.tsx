@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import { getEvents } from "@lib/sanity/queries"
+import { getEvents } from "../../../sanity/lib/fetch"
 import Link from "next/link"
 
 export const metadata: Metadata = {

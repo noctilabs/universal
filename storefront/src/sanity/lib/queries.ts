@@ -1,10 +1,6 @@
-/**
- * GROQ query definitions for TypeGen (synced from packages/sanity).
- * Do not edit - run 'yarn typegen' which syncs from packages/sanity first.
- */
-import groq from "groq"
+import { groq } from 'next-sanity'
 
-const eventsQuery = groq`
+export const eventsQuery = groq`
   *[_type == "event" && status == "published"] | order(eventDate desc) {
     _id,
     _createdAt,
@@ -32,7 +28,7 @@ const eventsQuery = groq`
   }
 `
 
-const eventBySlugQuery = groq`
+export const eventBySlugQuery = groq`
   *[_type == "event" && slug.current == $slug][0] {
     _id,
     _createdAt,
@@ -61,7 +57,7 @@ const eventBySlugQuery = groq`
   }
 `
 
-const mediaQuery = groq`
+export const mediaQuery = groq`
   *[_type == "media" && (!defined($category) || category == $category)] | order(publishedDate desc) {
     _id,
     _createdAt,
@@ -86,7 +82,7 @@ const mediaQuery = groq`
   }
 `
 
-const mediaBySlugQuery = groq`
+export const mediaBySlugQuery = groq`
   *[_type == "media" && slug.current == $slug][0] {
     _id,
     _createdAt,
@@ -111,7 +107,7 @@ const mediaBySlugQuery = groq`
   }
 `
 
-const resourcesQuery = groq`
+export const resourcesQuery = groq`
   *[_type == "resource" && isActive == true && (!defined($type) || resourceType == $type)] | order(title asc) {
     _id,
     _createdAt,
@@ -133,7 +129,7 @@ const resourcesQuery = groq`
   }
 `
 
-const resourceBySlugQuery = groq`
+export const resourceBySlugQuery = groq`
   *[_type == "resource" && slug.current == $slug][0] {
     _id,
     _createdAt,
@@ -160,7 +156,7 @@ const resourceBySlugQuery = groq`
   }
 `
 
-const studioSpacesQuery = groq`
+export const studioSpacesQuery = groq`
   *[_type == "resource" && isActive == true && resourceType in ["studio_space", "recording_studio", "rehearsal_room"]] | order(title asc) {
     _id,
     title,
@@ -178,7 +174,7 @@ const studioSpacesQuery = groq`
   }
 `
 
-const equipmentQuery = groq`
+export const equipmentQuery = groq`
   *[_type == "resource" && isActive == true && resourceType == "equipment"] | order(title asc) {
     _id,
     title,
@@ -191,14 +187,3 @@ const equipmentQuery = groq`
     equipmentDetails
   }
 `
-
-export {
-  eventsQuery,
-  eventBySlugQuery,
-  mediaQuery,
-  mediaBySlugQuery,
-  resourcesQuery,
-  resourceBySlugQuery,
-  studioSpacesQuery,
-  equipmentQuery,
-}

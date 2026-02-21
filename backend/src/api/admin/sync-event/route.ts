@@ -1,5 +1,5 @@
 import type { AuthenticatedMedusaRequest, MedusaResponse } from "@medusajs/framework/http"
-import { syncEventToProductWorkflow } from "../../../workflows/sync-event-to-product"
+import { syncEventToProductWorkflow } from "../../../workflows/sanity"
 import type { SyncEventSchema } from "./middlewares"
 
 export const POST = async (
