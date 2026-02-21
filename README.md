@@ -1,4 +1,4 @@
-# Universal Studio Platform
+# Universal Platform
 
 A production-ready studio/venue website built with Next.js, Medusa v2, and Sanity CMS for managing events, media library, and ticket sales.
 
@@ -28,7 +28,7 @@ A production-ready studio/venue website built with Next.js, Medusa v2, and Sanit
         ┌───▼───┐   ┌───▼───┐
         │Postgres│  │ Redis │
         │(Port   │  │(Port  │
-        │ 5432)  │  │ 6379) │
+        │ 5433)  │  │ 6379) │
         └────────┘  └───────┘
 ```
 
@@ -128,7 +128,7 @@ docker-compose ps
 
 ```env
 # Database
-DATABASE_URL=postgres://postgres:postgres@localhost:5432/medusa
+DATABASE_URL=postgres://postgres:postgres@localhost:5433/medusa
 REDIS_URL=redis://localhost:6379
 
 # Medusa

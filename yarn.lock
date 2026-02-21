@@ -11147,7 +11147,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/client@npm:^7.13.0, @sanity/client@npm:^7.13.2, @sanity/client@npm:^7.14.1, @sanity/client@npm:^7.2.1, @sanity/client@npm:^7.6.0, @sanity/client@npm:^7.9.0":
+"@sanity/client@npm:^7.13.0, @sanity/client@npm:^7.13.2, @sanity/client@npm:^7.2.1":
+  version: 7.15.0
+  resolution: "@sanity/client@npm:7.15.0"
+  dependencies:
+    "@sanity/eventsource": "npm:^5.0.2"
+    get-it: "npm:^8.7.0"
+    nanoid: "npm:^3.3.11"
+    rxjs: "npm:^7.0.0"
+  checksum: 10c0/607988b2c77d7c2a62d7af706be8989b07c8fcc910e0192083d1712c6b8243a6ea61b719e8d805f51cf1bcad1ae9087e46f8a3cada2d07778a56dba41e67386c
+  languageName: node
+  linkType: hard
+
+"@sanity/client@npm:^7.14.1, @sanity/client@npm:^7.6.0, @sanity/client@npm:^7.9.0":
   version: 7.14.1
   resolution: "@sanity/client@npm:7.14.1"
   dependencies:
@@ -13670,15 +13682,15 @@ __metadata:
 
 "@universal/types@file:../packages/types::locator=medusa-next%40workspace%3Astorefront":
   version: 1.0.0
-  resolution: "@universal/types@file:../packages/types#../packages/types::hash=86d770&locator=medusa-next%40workspace%3Astorefront"
-  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
+  resolution: "@universal/types@file:../packages/types#../packages/types::hash=5531c6&locator=medusa-next%40workspace%3Astorefront"
+  checksum: 10c0/9f2cbc45fe40b2b5297f218735286dec3f9b52666d19fa5c169770eaf713d74f2499cc84b990e0a5e2a3fe5a4c3191e47a9ed342ea5f34b506022079f2d44c6a
   languageName: node
   linkType: hard
 
 "@universal/types@file:../packages/types::locator=universal%40workspace%3Abackend":
   version: 1.0.0
-  resolution: "@universal/types@file:../packages/types#../packages/types::hash=86d770&locator=universal%40workspace%3Abackend"
-  checksum: 10c0/d5deb005c340046b4fc6b447a09186833a6dc65f1de78f7bb0a6fecd8fc0e0defd274d03890187816aefa21c40b3f8a36d9ad789c01f53a2760ce7f1ca022bda
+  resolution: "@universal/types@file:../packages/types#../packages/types::hash=5531c6&locator=universal%40workspace%3Abackend"
+  checksum: 10c0/9f2cbc45fe40b2b5297f218735286dec3f9b52666d19fa5c169770eaf713d74f2499cc84b990e0a5e2a3fe5a4c3191e47a9ed342ea5f34b506022079f2d44c6a
   languageName: node
   linkType: hard
 
