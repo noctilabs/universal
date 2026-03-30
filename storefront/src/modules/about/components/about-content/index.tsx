@@ -124,9 +124,11 @@ function getLocalTimeString(): string {
  */
 function HoverableMontevideo({ label }: { label: string }) {
   const [isHovered, setIsHovered] = useState(false)
-  const [localTime, setLocalTime] = useState<string>(() => getLocalTimeString())
+  const [localTime, setLocalTime] = useState<string>("")
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     setLocalTime(getLocalTimeString())
     const interval = setInterval(() => setLocalTime(getLocalTimeString()), 1000)
     return () => clearInterval(interval)
@@ -145,10 +147,12 @@ function HoverableMontevideo({ label }: { label: string }) {
         }`}
         aria-hidden={!isHovered}
       >
-        <span className={styles["about-montevideo-overlay-container"]}>
-          <span className={styles["about-montevideo-overlay-bg"]} />
-          <span className={styles["about-montevideo-time"]}>{localTime}</span>
-        </span>
+        {mounted && (
+          <span className={styles["about-montevideo-overlay-container"]}>
+            <span className={styles["about-montevideo-overlay-bg"]} />
+            <span className={styles["about-montevideo-time"]}>{localTime}</span>
+          </span>
+        )}
       </span>
     </span>
   )
@@ -208,30 +212,6 @@ const AboutContent = () => {
       <div className={styles["about-description-section"]}>
         <p className={styles["about-description-text"]}>{t.descriptionText}</p>
       </div>
-      <footer className={styles["about-footer"]}>
-        <div className={styles["about-footer-content"]}>
-          <div className={styles["about-footer-left"]}>
-            <p className={styles["about-footer-contact"]}>
-              {t.contactText}
-              <br />
-              <a href={`mailto:${t.email}`} className={styles["about-footer-email"]}>
-                {t.email}
-              </a>
-            </p>
-          </div>
-          <div className={styles["about-footer-center"]}>
-            <p className={styles["about-footer-address"]}>{t.address}</p>
-          </div>
-          <div className={styles["about-footer-right"]}>
-            <a href="https://instagram.com" className={styles["about-footer-instagram"]}>
-              {t.instagram}
-            </a>
-          </div>
-        </div>
-        <div className={styles["about-footer-bottom"]}>
-          <p className={styles["about-footer-copyright"]}>{t.copyright}</p>
-        </div>
-      </footer>
     </div>
   )
 }

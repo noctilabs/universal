@@ -139,7 +139,7 @@ body::-webkit-scrollbar {
 
   /* About page */
   .about-page-shell {
-    @apply relative min-h-screen w-full overflow-hidden bg-[#CDCDCD] outline outline-1 outline-black outline-offset-[-1px];
+    @apply relative min-h-screen w-full overflow-hidden bg-[#CDCDCD];
     min-height: 100dvh;
   }
   .about-content-inner {

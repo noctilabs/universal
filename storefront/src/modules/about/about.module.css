@@ -79,15 +79,15 @@
 .about-description-section {
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
-  padding: 4rem 1rem;
+  margin: 0;
+  padding: 4rem 1rem 4rem 40px;
 }
 
 .about-description-text {
   color: black;
   font-size: 28px;
   font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 450;
+  font-weight: 400;
   word-wrap: break-word;
   line-height: 1.4;
 }
