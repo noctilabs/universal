@@ -13,7 +13,7 @@ export default async function Footer() {
         backgroundColor: "#cdcdcc",
         display: "flex",
         flexDirection: "column",
-        padding: "9.866rem 40px 19.273rem",
+        padding: "9.866rem 40px 2rem",
         boxSizing: "border-box",
         fontFamily: '"Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif',
         position: "relative",
@@ -118,7 +118,7 @@ export default async function Footer() {
           textAlign: "left",
         }}
       >
-        All rights reserved ©2026. This site was designed by Pia Alive and developed by Someone.
+        All rights reserved ©2026. This site was designed by Pia Alive and developed by Nocti Labs.
       </p>
     </footer>
   )

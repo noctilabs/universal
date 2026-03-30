@@ -151,7 +151,7 @@ body::-webkit-scrollbar {
     align-items: center;
     width: 900px;
     height: 230px;
-    line-height: 48px;
+    line-height: normal;
     letter-spacing: 0;
   }
 
@@ -165,7 +165,7 @@ body::-webkit-scrollbar {
 
   /* Language selector (main pages) */
   .language-selector {
-    @apply fixed top-10 left-1/2 -translate-x-1/2 z-50 font-neue-haas font-[450] text-[18px] leading-[18px] uppercase;
+    @apply fixed top-10 left-1/2 -translate-x-1/2 z-50 font-neue-haas font-normal text-[18px] leading-[1.125] uppercase;
   }
 
   /* Bottom nav bar and links */
@@ -173,7 +173,7 @@ body::-webkit-scrollbar {
     @apply w-[479px] max-w-[calc(100vw-2rem)] h-[60px] bg-white opacity-80 flex items-center gap-[62.66px] px-[30px];
   }
   .nav-link {
-    @apply font-neue-haas font-[450] text-[18px] leading-[20.25px] text-black hover:opacity-70 transition-opacity;
+    @apply font-neue-haas font-normal text-[18px] leading-[1.125] text-black hover:opacity-70 transition-opacity;
   }
   .nav-wrapper-inside-hero {
     @apply absolute bottom-0 left-0 right-0 z-10 w-full flex justify-center px-4 small:px-6 pb-10;

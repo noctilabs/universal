@@ -15,7 +15,7 @@ const aboutTranslations = {
     email: "hola@esuniversal.uy",
     address: "Piedras 544, Montevideo, Uruguay.",
     instagram: "Instagram",
-    copyright: "All rights reserved ©2026. This site was designed by Pia Alive and developed by Someone.",
+    copyright: "All rights reserved ©2026. This site was designed by Pia Alive and developed by Nocti Labs.",
   },
   es: {
     paragraph1:
@@ -28,7 +28,7 @@ const aboutTranslations = {
     email: "hola@esuniversal.uy",
     address: "Piedras 544, Montevideo, Uruguay.",
     instagram: "Instagram",
-    copyright: "All rights reserved ©2026. This site was designed by Pia Alive and developed by Someone.",
+    copyright: "Todos los derechos reservados ©2026. Este sitio fue diseñado por Pia Alive y desarrollado por Nocti Labs.",
   },
 } as const
 

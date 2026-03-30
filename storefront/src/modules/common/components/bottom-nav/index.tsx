@@ -63,7 +63,7 @@ const BottomNav = ({ variant = "fixed" }: BottomNavProps) => {
                 href={href}
                 className={
                   isActive
-                    ? `${linkClass} underline underline-offset-2`
+                    ? `${linkClass} underline decoration-1 underline-offset-[3px]`
                     : linkClass
                 }
               >

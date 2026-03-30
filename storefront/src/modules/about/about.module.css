@@ -89,7 +89,7 @@
   font-family: "Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   word-wrap: break-word;
-  line-height: 1.4;
+  line-height: normal;
 }
 
 /* Footer section */
