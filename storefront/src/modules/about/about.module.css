@@ -44,10 +44,9 @@
 /* Image section */
 .about-image-section {
   position: relative;
-  width: 100%;
-  max-width: 1362px;
+  width: calc(100% - 80px);
   margin: 0 auto;
-  padding: 4rem 1rem 0;
+  padding: 4rem 0 0;
 }
 
 .about-landing-image {

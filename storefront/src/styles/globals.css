@@ -2,6 +2,22 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+  font-family: "Neue Haas Grotesk Display Std";
+  src: url("/fonts/NHaasGroteskRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Haas Grotesk Display Std";
+  src: url("/fonts/NHaasGroteskDSStd-65Md.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Hide scrollbar site-wide (scroll still works) */
 html,
 body {
