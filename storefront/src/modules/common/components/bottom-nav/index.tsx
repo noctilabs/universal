@@ -8,8 +8,8 @@ import { getLandingTranslations } from "@modules/landing/data/landing-translatio
 
 const NAV_HREFS = [
   { href: "/about", key: "about" as const },
-  { href: "/media", key: "archive" as const },
-  { href: "/events", key: "agenda" as const },
+  { href: "/archive", key: "archive" as const },
+  { href: "/agenda", key: "agenda" as const },
 ] as const
 
 type BottomNavProps = {

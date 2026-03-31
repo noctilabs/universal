@@ -137,6 +137,48 @@ body::-webkit-scrollbar {
     @apply text-[32px] leading-[44px] font-semibold;
   }
 
+  /* Agenda page */
+  .agenda-shell {
+    @apply relative min-h-screen w-full bg-[#cdcdcd];
+    min-height: 100dvh;
+    padding-bottom: 100px; /* clear fixed nav */
+  }
+
+  .agenda-list {
+    @apply w-full;
+    padding-top: 6.44vw; /* ~92.55px at 1440px */
+  }
+
+  .agenda-row {
+    @apply relative w-full cursor-pointer;
+    height: 4.79vw; /* ~69px row gap between tops (162-92=70px) */
+    min-height: 52px;
+  }
+
+  .agenda-title {
+    @apply absolute font-neue-haas font-normal text-black uppercase;
+    font-size: 4.44vw; /* 64px at 1440px */
+    line-height: 1.125;
+    top: 0;
+    white-space: nowrap;
+  }
+
+  .agenda-date {
+    @apply absolute flex flex-col font-neue-haas font-normal text-black uppercase;
+    font-size: 1.944vw; /* 28px at 1440px */
+    line-height: 1.2;
+    top: 0.42vw; /* ~6px offset matching Figma top offset */
+    white-space: nowrap;
+  }
+
+
+  /* Archive page */
+  .archive-page-shell {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+
   /* About page */
   .about-page-shell {
     @apply relative min-h-screen w-full overflow-hidden bg-[#CDCDCD];
