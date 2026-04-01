@@ -19,11 +19,12 @@ const MainWithConditionalPadding = ({ children }: MainWithConditionalPaddingProp
     (pathname === `/${countryCode}` || pathname === `/${countryCode}/`)
   const isAbout = pathname?.includes("/about")
   const isArchive = pathname?.includes("/archive")
+  const isAgenda = pathname?.includes("/agenda")
 
   return (
     <main
       className={
-        isHome || isAbout || isArchive
+        isHome || isAbout || isArchive || isAgenda
           ? "min-h-screen overflow-hidden"
           : "pb-20 small:pb-24"
       }

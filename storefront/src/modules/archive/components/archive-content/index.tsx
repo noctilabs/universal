@@ -15,10 +15,22 @@ export type ArchiveFrame = {
   aspect: number
 }
 
+type ArchiveFrameData = {
+  title: string
+  imageUrl: string
+  phi: number
+  theta: number
+  tiltX: number
+  tiltY: number
+  tiltZ: number
+  scale: number
+  aspect: number
+}
+
 const PI = Math.PI
 
-// Fashion/editorial magazine covers + portraits from Unsplash
-const ARCHIVE_FRAMES: ArchiveFrame[] = [
+// Fallback frames used when CMS has no data
+const FALLBACK_FRAMES: ArchiveFrame[] = [
   { id: "f1",  url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80", title: "Vogue I",        phi: PI/4,      theta: 0,             tilt: [0.05,  0.08, -0.03], scale: 1.1,  aspect: 3/4 },
   { id: "f2",  url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80", title: "Studio II",     phi: PI/3.5,    theta: PI/3,          tilt: [-0.07, 0.05,  0.04], scale: 1.2,  aspect: 3/4 },
   { id: "f3",  url: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80", title: "Cover III",     phi: PI/2,      theta: 2*PI/3,        tilt: [0.06, -0.06,  0.02], scale: 0.95, aspect: 3/4 },
@@ -51,6 +63,19 @@ const ARCHIVE_FRAMES: ArchiveFrame[] = [
   { id: "f30", url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80", title: "Haze XXX",      phi: PI/1.9,    theta: PI/6+1.2,      tilt: [-0.02, 0.06, -0.06], scale: 1.2,  aspect: 3/4 },
 ]
 
+function cmsFramesToArchiveFrames(frames: ArchiveFrameData[]): ArchiveFrame[] {
+  return frames.map((f, i) => ({
+    id: `f${i + 1}`,
+    url: f.imageUrl,
+    title: f.title,
+    phi: f.phi,
+    theta: f.theta,
+    tilt: [f.tiltX ?? 0, f.tiltY ?? 0, f.tiltZ ?? 0] as [number, number, number],
+    scale: f.scale ?? 1,
+    aspect: f.aspect ?? 0.75,
+  }))
+}
+
 const ArchiveScene = dynamic(
   () => import("@modules/archive/components/archive-scene"),
   {
@@ -64,13 +89,22 @@ const ArchiveScene = dynamic(
   }
 )
 
-export default function ArchiveContent() {
+type ArchiveContentProps = {
+  cmsFrames?: ArchiveFrameData[] | null
+}
+
+export default function ArchiveContent({ cmsFrames }: ArchiveContentProps) {
   const [selectedFrame, setSelectedFrame] = useState<ArchiveFrame | null>(null)
+
+  const frames =
+    cmsFrames && cmsFrames.length > 0
+      ? cmsFramesToArchiveFrames(cmsFrames)
+      : FALLBACK_FRAMES
 
   return (
     <div className="archive-page-shell">
       <ArchiveScene
-        frames={ARCHIVE_FRAMES}
+        frames={frames}
         onFrameClick={setSelectedFrame}
       />
       <ArchiveOverlay
