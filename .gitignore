@@ -11,6 +11,4 @@ node_modules
 # Build outputs
 dist
 build
-.medusa
-!backend/.medusa
 .cache
