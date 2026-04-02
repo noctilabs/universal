@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 
 import AboutContent from "@modules/about/components/about-content"
+import { getAboutPage } from "../../../../sanity/lib/fetch"
 
 export const metadata: Metadata = {
   title: "About | Universal",
@@ -8,9 +9,7 @@ export const metadata: Metadata = {
     "Universal is a multidisciplinary space and home for contemporary culture in Montevideo.",
 }
 
-/**
- * About page: grey full-viewport layout, centered description. Nav and language selector from (main) layout.
- */
-export default function AboutPage() {
-  return <AboutContent />
+export default async function AboutPage() {
+  const cmsData = await getAboutPage()
+  return <AboutContent cmsData={cmsData} />
 }

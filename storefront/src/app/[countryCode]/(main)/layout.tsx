@@ -12,19 +12,34 @@ import MainWithConditionalPadding from "@modules/layout/components/main-with-con
 import { LandingLocaleProvider } from "@modules/landing/context/landing-locale-context"
 import FreeShippingPriceNudge from "@modules/shipping/components/free-shipping-price-nudge"
 import Footer from "@modules/layout/templates/footer"
+import { getSiteSettings } from "../../../sanity/lib/fetch"
+
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
 
-export default async function PageLayout(props: { children: React.ReactNode }) {
-  const customer = await retrieveCustomer()
-  const cart = await retrieveCart()
-  let shippingOptions: StoreCartShippingOption[] = []
+export default async function PageLayout(props: { children: React.ReactNode; params: Promise<{ countryCode: string }> }) {
+  const { countryCode } = await props.params
+  const locale = countryCode === "es" ? "es" : "en"
 
+  const [customer, cart, siteSettings] = await Promise.all([
+    retrieveCustomer(),
+    retrieveCart(),
+    getSiteSettings(),
+  ])
+
+  const nav = siteSettings?.navigation
+  const navLabels = {
+    about: (locale === "es" ? nav?.aboutLabel_es : nav?.aboutLabel_en) ?? undefined,
+    archive: (locale === "es" ? nav?.archiveLabel_es : nav?.archiveLabel_en) ?? undefined,
+    agenda: (locale === "es" ? nav?.agendaLabel_es : nav?.agendaLabel_en) ?? undefined,
+  }
+
+  let shippingOptions: StoreCartShippingOption[] = []
   if (cart) {
     const { shipping_options } = await listCartOptions()
-
     shippingOptions = shipping_options
   }
 
@@ -42,8 +57,8 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
         />
       )}
       <MainWithConditionalPadding>
-        <LayoutWithConditionalNav>
-          <ConditionalFooter footer={<Footer />}>{props.children}</ConditionalFooter>
+        <LayoutWithConditionalNav navLabels={navLabels}>
+          <ConditionalFooter footer={<Footer locale={locale} />}>{props.children}</ConditionalFooter>
         </LayoutWithConditionalNav>
       </MainWithConditionalPadding>
     </LandingLocaleProvider>

@@ -187,3 +187,61 @@ export const equipmentQuery = groq`
     equipmentDetails
   }
 `
+
+// ── Singleton page queries ────────────────────────────────────────────────────
+
+export const siteSettingsQuery = groq`
+  *[_type == "siteSettings"][0] {
+    footer,
+    navigation,
+    "landingImageUrl": landingImage.asset->url
+  }
+`
+
+export const aboutPageQuery = groq`
+  *[_type == "aboutPage"][0] {
+    "featuredImageUrl": featuredImage.asset->url,
+    "hoverLogoUrl": hoverLogoImage.asset->url,
+    "hoverGlobeUrl": hoverGlobeImage.asset->url,
+    "hoverHotelUrl": hoverHotelImage.asset->url,
+    paragraph1_en,
+    paragraph1_es,
+    paragraph2_en,
+    paragraph2_es,
+    descriptionText_en,
+    descriptionText_es
+  }
+`
+
+export const agendaPageQuery = groq`
+  *[_type == "agendaPage"][0] {
+    "rows": rows[] {
+      rowId,
+      href,
+      "items": items[] {
+        text,
+        leftPx,
+        topPx,
+        size,
+        "hoverImageUrl": hoverImage.asset->url,
+        hoverImagePosition
+      }
+    }
+  }
+`
+
+export const archivePageQuery = groq`
+  *[_type == "archivePage"][0] {
+    "frames": frames[] {
+      title,
+      "imageUrl": image.asset->url,
+      phi,
+      theta,
+      tiltX,
+      tiltY,
+      tiltZ,
+      scale,
+      aspect
+    }
+  }
+`
