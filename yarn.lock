@@ -13850,15 +13850,15 @@ __metadata:
 
 "@universal/types@file:../packages/types::locator=medusa-next%40workspace%3Astorefront":
   version: 1.0.0
-  resolution: "@universal/types@file:../packages/types#../packages/types::hash=00a567&locator=medusa-next%40workspace%3Astorefront"
-  checksum: 10c0/2464cea469a9b1b1db980a641e3897781cf0b9d4de87c460d6ac44dbd73d406689f3210b882ec1743ffe66662fb75f0e0a251d242247ff58ecfc34dca96aa678
+  resolution: "@universal/types@file:../packages/types#../packages/types::hash=06b6d0&locator=medusa-next%40workspace%3Astorefront"
+  checksum: 10c0/dcc316fa041aa402a96333066a24c20f723d11bc4e9a2031296c044bc5fd55805b5947166d24c569676ea9d6387436c7934421c71ebf7a2c4899fc161b7b278b
   languageName: node
   linkType: hard
 
 "@universal/types@file:../packages/types::locator=universal%40workspace%3Abackend":
   version: 1.0.0
-  resolution: "@universal/types@file:../packages/types#../packages/types::hash=00a567&locator=universal%40workspace%3Abackend"
-  checksum: 10c0/2464cea469a9b1b1db980a641e3897781cf0b9d4de87c460d6ac44dbd73d406689f3210b882ec1743ffe66662fb75f0e0a251d242247ff58ecfc34dca96aa678
+  resolution: "@universal/types@file:../packages/types#../packages/types::hash=06b6d0&locator=universal%40workspace%3Abackend"
+  checksum: 10c0/dcc316fa041aa402a96333066a24c20f723d11bc4e9a2031296c044bc5fd55805b5947166d24c569676ea9d6387436c7934421c71ebf7a2c4899fc161b7b278b
   languageName: node
   linkType: hard
 
