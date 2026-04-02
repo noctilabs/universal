@@ -8,20 +8,28 @@ import { getLandingTranslations } from "@modules/landing/data/landing-translatio
 
 const NAV_HREFS = [
   { href: "/about", key: "about" as const },
-  { href: "/media", key: "archive" as const },
-  { href: "/events", key: "agenda" as const },
+  { href: "/archive", key: "archive" as const },
+  { href: "/agenda", key: "agenda" as const },
 ] as const
+
+export type NavLabels = {
+  about?: string
+  archive?: string
+  agenda?: string
+}
 
 type BottomNavProps = {
   /** When "inside-hero", nav is absolute inside hero (home). Otherwise fixed at viewport bottom. */
   variant?: "inside-hero" | "fixed"
+  /** Nav labels from CMS (optional). Falls back to hardcoded translations. */
+  navLabels?: NavLabels
 }
 
 /**
  * Main bottom nav: 479×60px bar, opacity 0.80 white, logo 66×23, links 18px Neue Haas.
  * Shared across landing, about, and other (main) pages.
  */
-const BottomNav = ({ variant = "fixed" }: BottomNavProps) => {
+const BottomNav = ({ variant = "fixed", navLabels }: BottomNavProps) => {
   const pathname = usePathname()
   const { locale } = useLandingLocale()
   const t = getLandingTranslations(locale)
@@ -34,6 +42,12 @@ const BottomNav = ({ variant = "fixed" }: BottomNavProps) => {
     (pathname?.replace(/^\/[a-z]{2}(?:\/|$)/i, "/").replace(/\/$/, "") ?? "/") ||
     "/"
   const linkClass = "nav-link"
+
+  const labels = {
+    about: navLabels?.about ?? t.nav.about,
+    archive: navLabels?.archive ?? t.nav.archive,
+    agenda: navLabels?.agenda ?? t.nav.agenda,
+  }
 
   return (
     <div className={wrapperClass}>
@@ -63,11 +77,11 @@ const BottomNav = ({ variant = "fixed" }: BottomNavProps) => {
                 href={href}
                 className={
                   isActive
-                    ? `${linkClass} underline underline-offset-2`
+                    ? `${linkClass} underline decoration-1 underline-offset-[3px]`
                     : linkClass
                 }
               >
-                {t.nav[key]}
+                {labels[key]}
               </LocalizedClientLink>
             )
           })}

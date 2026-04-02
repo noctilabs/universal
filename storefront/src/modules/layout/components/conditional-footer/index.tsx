@@ -18,11 +18,12 @@ const ConditionalFooter = ({ children, footer }: ConditionalFooterProps) => {
   const isHome =
     !!countryCode &&
     (pathname === `/${countryCode}` || pathname === `/${countryCode}/`)
+  const isArchive = pathname?.includes("/archive")
 
   return (
     <>
       {children}
-      {!isHome && footer}
+      {!isHome && !isArchive && footer}
     </>
   )
 }

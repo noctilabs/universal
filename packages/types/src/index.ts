@@ -12,3 +12,6 @@ export * from "./api.js"
 
 // Booking types
 export * from "./booking.js"
+
+// CMS page types (singletons)
+export * from "./cms-pages.js"

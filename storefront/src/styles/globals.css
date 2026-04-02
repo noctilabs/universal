@@ -2,6 +2,22 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+  font-family: "Neue Haas Grotesk Display Std";
+  src: url("/fonts/NHaasGroteskRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Haas Grotesk Display Std";
+  src: url("/fonts/NHaasGroteskDSStd-65Md.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Hide scrollbar site-wide (scroll still works) */
 html,
 body {
@@ -121,9 +137,51 @@ body::-webkit-scrollbar {
     @apply text-[32px] leading-[44px] font-semibold;
   }
 
+  /* Agenda page */
+  .agenda-shell {
+    @apply relative min-h-screen w-full bg-[#cdcdcd];
+    min-height: 100dvh;
+    padding-bottom: 100px; /* clear fixed nav */
+  }
+
+  .agenda-list {
+    @apply w-full;
+    padding-top: 6.44vw; /* ~92.55px at 1440px */
+  }
+
+  .agenda-row {
+    @apply relative w-full cursor-pointer;
+    height: 4.79vw; /* ~69px row gap between tops (162-92=70px) */
+    min-height: 52px;
+  }
+
+  .agenda-title {
+    @apply absolute font-neue-haas font-normal text-black uppercase;
+    font-size: 4.44vw; /* 64px at 1440px */
+    line-height: 1.125;
+    top: 0;
+    white-space: nowrap;
+  }
+
+  .agenda-date {
+    @apply absolute flex flex-col font-neue-haas font-normal text-black uppercase;
+    font-size: 1.944vw; /* 28px at 1440px */
+    line-height: 1.2;
+    top: 0.42vw; /* ~6px offset matching Figma top offset */
+    white-space: nowrap;
+  }
+
+
+  /* Archive page */
+  .archive-page-shell {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+
   /* About page */
   .about-page-shell {
-    @apply relative min-h-screen w-full overflow-hidden bg-[#CDCDCD] outline outline-1 outline-black outline-offset-[-1px];
+    @apply relative min-h-screen w-full overflow-hidden bg-[#CDCDCD];
     min-height: 100dvh;
   }
   .about-content-inner {
@@ -135,7 +193,7 @@ body::-webkit-scrollbar {
     align-items: center;
     width: 900px;
     height: 230px;
-    line-height: 48px;
+    line-height: normal;
     letter-spacing: 0;
   }
 
@@ -149,7 +207,7 @@ body::-webkit-scrollbar {
 
   /* Language selector (main pages) */
   .language-selector {
-    @apply fixed top-10 left-1/2 -translate-x-1/2 z-50 font-neue-haas font-[450] text-[18px] leading-[18px] uppercase;
+    @apply fixed top-10 left-1/2 -translate-x-1/2 z-50 font-neue-haas font-normal text-[18px] leading-[1.125] uppercase;
   }
 
   /* Bottom nav bar and links */
@@ -157,7 +215,7 @@ body::-webkit-scrollbar {
     @apply w-[479px] max-w-[calc(100vw-2rem)] h-[60px] bg-white opacity-80 flex items-center gap-[62.66px] px-[30px];
   }
   .nav-link {
-    @apply font-neue-haas font-[450] text-[18px] leading-[20.25px] text-black hover:opacity-70 transition-opacity;
+    @apply font-neue-haas font-normal text-[18px] leading-[1.125] text-black hover:opacity-70 transition-opacity;
   }
   .nav-wrapper-inside-hero {
     @apply absolute bottom-0 left-0 right-0 z-10 w-full flex justify-center px-4 small:px-6 pb-10;
