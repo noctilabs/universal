@@ -8,8 +8,10 @@
     "storefront"
   ],
   "scripts": {
-    "build": "yarn build:types",
-    "build:types": "yarn workspace @universal/types run build"
+    "build": "yarn build:types && yarn build:backend",
+    "build:types": "yarn workspace @universal/types run build",
+    "build:backend": "yarn workspace universal run build",
+    "start:backend": "yarn workspace universal run start"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
