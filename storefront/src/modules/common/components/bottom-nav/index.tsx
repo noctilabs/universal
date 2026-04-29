@@ -13,9 +13,12 @@ const NAV_HREFS = [
 ] as const
 
 export type NavLabels = {
-  about?: string
-  archive?: string
-  agenda?: string
+  about_en?: string
+  about_es?: string
+  archive_en?: string
+  archive_es?: string
+  agenda_en?: string
+  agenda_es?: string
 }
 
 type BottomNavProps = {
@@ -44,9 +47,9 @@ const BottomNav = ({ variant = "fixed", navLabels }: BottomNavProps) => {
   const linkClass = "nav-link"
 
   const labels = {
-    about: navLabels?.about ?? t.nav.about,
-    archive: navLabels?.archive ?? t.nav.archive,
-    agenda: navLabels?.agenda ?? t.nav.agenda,
+    about: (locale === "es" ? navLabels?.about_es : navLabels?.about_en) ?? t.nav.about,
+    archive: (locale === "es" ? navLabels?.archive_es : navLabels?.archive_en) ?? t.nav.archive,
+    agenda: (locale === "es" ? navLabels?.agenda_es : navLabels?.agenda_en) ?? t.nav.agenda,
   }
 
   return (

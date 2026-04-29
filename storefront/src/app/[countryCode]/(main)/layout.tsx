@@ -32,9 +32,12 @@ export default async function PageLayout(props: { children: React.ReactNode; par
 
   const nav = siteSettings?.navigation
   const navLabels = {
-    about: (locale === "es" ? nav?.aboutLabel_es : nav?.aboutLabel_en) ?? undefined,
-    archive: (locale === "es" ? nav?.archiveLabel_es : nav?.archiveLabel_en) ?? undefined,
-    agenda: (locale === "es" ? nav?.agendaLabel_es : nav?.agendaLabel_en) ?? undefined,
+    about_en: nav?.aboutLabel_en ?? undefined,
+    about_es: nav?.aboutLabel_es ?? undefined,
+    archive_en: nav?.archiveLabel_en ?? undefined,
+    archive_es: nav?.archiveLabel_es ?? undefined,
+    agenda_en: nav?.agendaLabel_en ?? undefined,
+    agenda_es: nav?.agendaLabel_es ?? undefined,
   }
 
   let shippingOptions: StoreCartShippingOption[] = []
