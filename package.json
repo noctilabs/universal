@@ -11,7 +11,9 @@
     "build": "yarn build:types && yarn build:backend",
     "build:types": "yarn workspace @universal/types run build",
     "build:backend": "yarn workspace universal run build",
-    "start:backend": "yarn workspace universal run start"
+    "start:backend": "yarn workspace universal run start",
+    "migrate:backend": "yarn workspace universal run medusa db:migrate",
+    "start:backend:compiled": "cd backend/.medusa/server && node ../../node_modules/@medusajs/cli/cli.js start"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
