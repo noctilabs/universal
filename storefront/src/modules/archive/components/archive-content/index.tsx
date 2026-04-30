@@ -64,7 +64,7 @@ const FALLBACK_FRAMES: ArchiveFrame[] = [
 ]
 
 function cmsFramesToArchiveFrames(frames: ArchiveFrameData[]): ArchiveFrame[] {
-  return frames.map((f, i) => ({
+  return frames.filter((f) => !!f.imageUrl).map((f, i) => ({
     id: `f${i + 1}`,
     url: f.imageUrl,
     title: f.title,

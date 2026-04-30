@@ -108,7 +108,7 @@ export default function AgendaContent({ cmsData }: AgendaContentProps) {
       )}
       <div className="agenda-list">
         {rows.map((row) => (
-          <LocalizedClientLink key={row.rowId} href={row.href} className="block">
+          <LocalizedClientLink key={row.rowId} href={row.href ?? "/events"} className="block">
             <div className="agenda-row">
               {row.items.map((item, i) => (
                 <span

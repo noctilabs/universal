@@ -39,6 +39,7 @@ export default function ArchiveFrameMesh({ frame, onSelect }: ArchiveFrameMeshPr
   }, [frame.tilt])
 
   useEffect(() => {
+    if (!frame.url) return
     const loader = new THREE.TextureLoader()
     loader.load(
       frame.url,
