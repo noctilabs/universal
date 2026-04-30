@@ -21,9 +21,6 @@ export const metadata: Metadata = {
 }
 
 export default async function PageLayout(props: { children: React.ReactNode; params: Promise<{ countryCode: string }> }) {
-  const { countryCode } = await props.params
-  const locale = countryCode === "es" ? "es" : "en"
-
   const [customer, cart, siteSettings] = await Promise.all([
     retrieveCustomer(),
     retrieveCart(),
@@ -61,7 +58,7 @@ export default async function PageLayout(props: { children: React.ReactNode; par
       )}
       <MainWithConditionalPadding>
         <LayoutWithConditionalNav navLabels={navLabels}>
-          <ConditionalFooter footer={<Footer locale={locale} />}>{props.children}</ConditionalFooter>
+          <ConditionalFooter footer={<Footer />}>{props.children}</ConditionalFooter>
         </LayoutWithConditionalNav>
       </MainWithConditionalPadding>
     </LandingLocaleProvider>
