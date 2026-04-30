@@ -1,0 +1,133 @@
+"use client"
+
+import { useLandingLocale } from "@modules/landing/context/landing-locale-context"
+
+const FooterLogo = () => (
+  <svg width="100%" height="auto" viewBox="0 0 1360 474" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+    <path d="M452.127 0V233.764H450.803C438.585 115.018 342.348 22.5618 225.402 22.5618C108.455 22.5618 12.2185 115.018 0 233.764V473.602H1359.03V0H452.127ZM596.533 452.543H486.121V450.198C504.455 449.777 515.336 444.171 521.236 432.191C527.065 420.346 527.525 402.985 527.525 381.506V97.3117C527.525 75.8472 527.065 58.4712 521.236 46.6266C515.35 34.6468 504.47 29.0552 486.121 28.6193V26.2745H596.533V28.6193C578.198 29.0402 567.318 34.6468 561.418 46.6266C555.589 58.4712 555.128 75.8322 555.128 97.3117V381.521C555.128 402.985 555.589 420.361 561.418 432.206C567.304 444.186 578.184 449.777 596.533 450.213V452.558V452.543ZM734.074 452.543H623.661V450.198C641.996 449.777 652.876 444.171 658.777 432.191C664.606 420.346 665.066 402.985 665.066 381.506V97.3117C665.066 75.8472 664.606 58.4712 658.777 46.6266C652.891 34.6468 642.011 29.0552 623.661 28.6193V26.2745H734.074V28.6193C715.739 29.0402 704.859 34.6468 698.958 46.6266C693.13 58.4712 692.669 75.8322 692.669 97.3117V381.521C692.669 402.985 693.13 420.361 698.958 432.206C704.845 444.186 715.725 449.777 734.074 450.213V452.558V452.543ZM871.6 28.6343C853.265 29.0552 842.385 34.6618 836.485 46.6417C830.656 58.4862 830.196 75.8472 830.196 97.3267V381.521C830.196 402.985 830.656 420.361 836.485 432.206C842.371 444.186 853.251 449.777 871.6 450.213V452.558H761.188V450.213C779.523 449.792 790.403 444.186 796.303 432.206C802.132 420.361 802.592 403 802.592 381.521V97.3117C802.592 75.8472 802.132 58.4712 796.303 46.6266C790.417 34.6468 779.537 29.0552 761.188 28.6193V26.2745H871.6V28.6193V28.6343ZM1132.3 451.746C1019.6 451.746 928.246 356.329 928.246 238.62C928.246 120.911 1019.62 25.5079 1132.3 25.5079C1244.99 25.5079 1336.36 120.926 1336.36 238.635C1336.36 356.344 1245.01 451.761 1132.3 451.761V451.746Z" fill="black"/>
+  </svg>
+)
+
+type FooterData = {
+  contactText_en: string
+  contactText_es: string
+  email: string
+  address: string
+  instagramUrl: string
+  instagramLabel: string
+  copyright_en: string
+  copyright_es: string
+}
+
+export default function FooterContent({ data }: { data: FooterData }) {
+  const { locale } = useLandingLocale()
+
+  const contactText = locale === "es" ? data.contactText_es : data.contactText_en
+  const copyright = locale === "es" ? data.copyright_es : data.copyright_en
+
+  return (
+    <footer
+      style={{
+        width: "100%",
+        margin: 0,
+        backgroundColor: "#cdcdcc",
+        display: "flex",
+        flexDirection: "column",
+        padding: "9.866rem 40px 2rem",
+        boxSizing: "border-box",
+        fontFamily: '"Neue Haas Grotesk Display Std", "Helvetica Neue", Helvetica, Arial, sans-serif',
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "1.699rem",
+        }}
+      >
+        <FooterLogo />
+      </div>
+
+      <div
+        style={{
+          width: "100%",
+          position: "relative",
+          height: "auto",
+          marginBottom: "8.688rem",
+          display: "grid",
+          gridTemplateColumns: "38.68% 22.63% 16.51%",
+          columnGap: "calc((100% - 38.68% - 22.63% - 16.51%) / 2)",
+          alignItems: "flex-start",
+        }}
+      >
+        <div
+          style={{
+            fontSize: "24px",
+            fontWeight: 400,
+            color: "#000",
+            lineHeight: 1.4,
+          }}
+        >
+          <p style={{ margin: 0 }}>{contactText}{" "}</p>
+          <a
+            href={`mailto:${data.email}`}
+            style={{
+              color: "#000",
+              fontWeight: 500,
+              textDecoration: "none",
+            }}
+          >
+            {data.email}
+          </a>
+        </div>
+
+        <div style={{ textAlign: "left" }}>
+          <p
+            style={{
+              fontSize: "24px",
+              fontWeight: 400,
+              color: "#000",
+              lineHeight: 1.4,
+              margin: 0,
+            }}
+          >
+            {data.address}
+          </p>
+        </div>
+
+        <div>
+          <a
+            href={data.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: "24px",
+              fontWeight: 400,
+              color: "#000",
+              lineHeight: 1.4,
+              textDecoration: "none",
+            }}
+          >
+            {data.instagramLabel}
+          </a>
+        </div>
+      </div>
+
+      <p
+        style={{
+          width: "calc(100% - 80px)",
+          fontSize: "18px",
+          fontWeight: 400,
+          color: "#000",
+          lineHeight: 1.4,
+          margin: 0,
+          textAlign: "left",
+        }}
+      >
+        {copyright}
+      </p>
+    </footer>
+  )
+}
