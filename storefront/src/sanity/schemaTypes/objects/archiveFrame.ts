@@ -69,6 +69,48 @@ export default defineType({
       initialValue: 0.75,
       validation: (Rule) => Rule.required().min(0.1).max(5),
     }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "URL-safe identifier. Click 'Generate' to auto-fill from the title.",
+      options: { source: "title", maxLength: 96 },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "year",
+      title: "Year",
+      type: "string",
+      description: "e.g. 2022",
+    }),
+    defineField({
+      name: "typeOfProject",
+      title: "Type of Project",
+      type: "string",
+      description: "e.g. EXHIBITION, INSTALLATION, EDITORIAL",
+    }),
+    defineField({
+      name: "artDirection",
+      title: "Art Direction",
+      type: "string",
+    }),
+    defineField({
+      name: "photography",
+      title: "Photography",
+      type: "string",
+    }),
+    defineField({
+      name: "description_en",
+      title: "Description (English)",
+      type: "text",
+      rows: 5,
+    }),
+    defineField({
+      name: "description_es",
+      title: "Description (Spanish)",
+      type: "text",
+      rows: 5,
+    }),
   ],
   preview: {
     select: {
