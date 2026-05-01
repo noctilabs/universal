@@ -77,6 +77,13 @@ export interface ArchiveFrameData {
   tiltZ: number
   scale: number
   aspect: number
+  slug?: string
+  year?: string
+  typeOfProject?: string
+  artDirection?: string
+  photography?: string
+  description_en?: string
+  description_es?: string
 }
 
 export interface ArchivePageData {

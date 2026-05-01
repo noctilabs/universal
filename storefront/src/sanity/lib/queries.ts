@@ -234,6 +234,7 @@ export const archivePageQuery = groq`
   *[_type == "archivePage"][0] {
     "frames": frames[] {
       title,
+      "slug": slug.current,
       "imageUrl": image.asset->url,
       phi,
       theta,
@@ -241,7 +242,13 @@ export const archivePageQuery = groq`
       tiltY,
       tiltZ,
       scale,
-      aspect
+      aspect,
+      year,
+      typeOfProject,
+      artDirection,
+      photography,
+      description_en,
+      description_es
     }
   }
 `
