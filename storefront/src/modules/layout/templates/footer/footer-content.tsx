@@ -17,6 +17,8 @@ type FooterData = {
   instagramLabel: string
   copyright_en: string
   copyright_es: string
+  newsletterLabel_en?: string
+  newsletterLabel_es?: string
 }
 
 export default function FooterContent({ data }: { data: FooterData }) {
@@ -24,6 +26,9 @@ export default function FooterContent({ data }: { data: FooterData }) {
 
   const contactText = locale === "es" ? data.contactText_es : data.contactText_en
   const copyright = locale === "es" ? data.copyright_es : data.copyright_en
+  const newsletterLabel = locale === "es"
+    ? (data.newsletterLabel_es ?? "Recibí noticias de Universal:")
+    : (data.newsletterLabel_en ?? "Receive news from Universal:")
 
   return (
     <footer
@@ -44,7 +49,7 @@ export default function FooterContent({ data }: { data: FooterData }) {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          marginBottom: "1.699rem",
+          marginBottom: "2.5rem",
         }}
       >
         <FooterLogo />
@@ -55,7 +60,7 @@ export default function FooterContent({ data }: { data: FooterData }) {
           width: "100%",
           position: "relative",
           height: "auto",
-          marginBottom: "8.688rem",
+          marginBottom: "3rem",
           display: "grid",
           gridTemplateColumns: "38.68% 22.63% 16.51%",
           columnGap: "calc((100% - 38.68% - 22.63% - 16.51%) / 2)",
@@ -112,6 +117,47 @@ export default function FooterContent({ data }: { data: FooterData }) {
           >
             {data.instagramLabel}
           </a>
+        </div>
+      </div>
+
+      <div style={{ marginBottom: "8rem" }}>
+        <p style={{ fontSize: "24px", fontWeight: 400, color: "#000", lineHeight: 1.4, margin: "0 0 1.25rem 0" }}>
+          {newsletterLabel}
+        </p>
+        <div style={{ display: "flex", alignItems: "center", width: "38.68%", minWidth: "380px", border: "2px solid #000" }}>
+          <style>{`.footer-email-input::placeholder { color: #000; opacity: 1; }`}</style>
+          <input
+            type="email"
+            placeholder="Email"
+            className="footer-email-input"
+            style={{
+              background: "none",
+              border: "none",
+              outline: "none",
+              fontSize: "24px",
+              fontWeight: 400,
+              color: "#000",
+              fontFamily: "inherit",
+              padding: "0.5rem 1rem",
+              flex: 1,
+            }}
+          />
+          <button
+            type="button"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "24px",
+              fontWeight: 400,
+              color: "#000",
+              fontFamily: "inherit",
+              padding: "0.5rem 1.5rem",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {locale === "es" ? "Enviar" : "Send"}
+          </button>
         </div>
       </div>
 
