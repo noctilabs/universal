@@ -7,6 +7,8 @@ export interface SiteSettingsFooter {
     instagramLabel?: string;
     copyright_en?: string;
     copyright_es?: string;
+    newsletterLabel_en?: string;
+    newsletterLabel_es?: string;
 }
 export interface SiteSettingsNavigation {
     aboutLabel_en?: string;
@@ -62,6 +64,13 @@ export interface ArchiveFrameData {
     tiltZ: number;
     scale: number;
     aspect: number;
+    slug?: string;
+    year?: string;
+    typeOfProject?: string;
+    artDirection?: string;
+    photography?: string;
+    description_en?: string;
+    description_es?: string;
 }
 export interface ArchivePageData {
     _type: "archivePage";

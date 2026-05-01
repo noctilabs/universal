@@ -17,6 +17,10 @@ const FALLBACK = {
 export default async function Footer() {
   const settings = await getSiteSettings()
   const f = settings?.footer ?? {}
+  const footerWithNewsletter = f as typeof f & {
+    newsletterLabel_en?: string
+    newsletterLabel_es?: string
+  }
 
   const data = {
     contactText_en: f.contactText_en ?? FALLBACK.contactText_en,
@@ -27,8 +31,8 @@ export default async function Footer() {
     instagramLabel: f.instagramLabel ?? FALLBACK.instagramLabel,
     copyright_en: f.copyright_en ?? FALLBACK.copyright_en,
     copyright_es: f.copyright_es ?? FALLBACK.copyright_es,
-    newsletterLabel_en: f.newsletterLabel_en ?? FALLBACK.newsletterLabel_en,
-    newsletterLabel_es: f.newsletterLabel_es ?? FALLBACK.newsletterLabel_es,
+    newsletterLabel_en: footerWithNewsletter.newsletterLabel_en ?? FALLBACK.newsletterLabel_en,
+    newsletterLabel_es: footerWithNewsletter.newsletterLabel_es ?? FALLBACK.newsletterLabel_es,
   }
 
   return <FooterContent data={data} />
