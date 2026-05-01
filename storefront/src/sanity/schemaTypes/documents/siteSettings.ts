@@ -58,6 +58,18 @@ export default defineType({
           title: "Copyright Text (Spanish)",
           type: "string",
         }),
+        defineField({
+          name: "newsletterLabel_en",
+          title: "Newsletter Label (English)",
+          type: "string",
+          initialValue: "Receive news from Universal:",
+        }),
+        defineField({
+          name: "newsletterLabel_es",
+          title: "Newsletter Label (Spanish)",
+          type: "string",
+          initialValue: "Recibí noticias de Universal:",
+        }),
       ],
     }),
 

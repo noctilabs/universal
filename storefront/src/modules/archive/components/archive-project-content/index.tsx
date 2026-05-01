@@ -61,44 +61,38 @@ export default function ArchiveProjectContent({ project, prevSlug, nextSlug }: P
         />
       </div>
 
-      {/* Title row: 3 columns — left margin | title+year | metadata */}
-      {/* Figma: left=2.67%, year at 34.72%, metadata at 58.68% */}
+      {/* Title row: padding left=38.5px, title takes ~37%, year next, metadata at 58.68% */}
       <div style={{
         display: "grid",
-        gridTemplateColumns: "2.67% 56.01% 1fr",
+        gridTemplateColumns: "38.5px 37% 21.68% 1fr",
         paddingTop: "70px",
         alignItems: "start",
       }}>
         <div />
-        {/* Title + Year inline */}
-        <div style={{ display: "flex", alignItems: "baseline" }}>
-          <h1 style={{
-            fontSize: "64px",
+        <h1 style={{
+          fontSize: "clamp(28px, 4.44vw, 64px)",
+          fontWeight: 400,
+          lineHeight: 1.125,
+          margin: 0,
+          textTransform: "uppercase",
+          color: "#000",
+          minWidth: 0,
+        }}>
+          {project.title}
+        </h1>
+        {project.year ? (
+          <span style={{
+            fontSize: "clamp(28px, 4.44vw, 64px)",
             fontWeight: 400,
             lineHeight: 1.125,
-            margin: 0,
-            textTransform: "uppercase",
             color: "#000",
-            whiteSpace: "nowrap",
-            width: "32.06vw", /* 500px/1440px — year starts here */
+            textTransform: "uppercase",
+            minWidth: 0,
           }}>
-            {project.title}
-          </h1>
-          {project.year && (
-            <span style={{
-              fontSize: "64px",
-              fontWeight: 400,
-              lineHeight: 1.125,
-              color: "#000",
-              textTransform: "uppercase",
-              whiteSpace: "nowrap",
-            }}>
-              {project.year}
-            </span>
-          )}
-        </div>
-        {/* Metadata */}
-        <div style={{ fontSize: "18px", fontWeight: 400, lineHeight: 1, color: "#000", paddingRight: "40px" }}>
+            {project.year}
+          </span>
+        ) : <div />}
+        <div style={{ fontSize: "clamp(14px, 1.25vw, 18px)", fontWeight: 400, lineHeight: 1.4, color: "#000", minWidth: 0 }}>
           {project.typeOfProject && <p style={{ margin: 0 }}>TYPE OF PROJECT: {project.typeOfProject.toUpperCase()}</p>}
           {project.year && <p style={{ margin: 0 }}>YEAR: {project.year}</p>}
           {project.artDirection && <p style={{ margin: 0 }}>ART DIRECTION: {project.artDirection.toUpperCase()}</p>}
@@ -107,28 +101,29 @@ export default function ArchiveProjectContent({ project, prevSlug, nextSlug }: P
       </div>
 
       {/* Description + Next Project row */}
-      {/* Figma: description top=227px from hero bottom, title top=70px → gap=157px from title top, title height=73px → marginTop=84px */}
+      {/* Description row: left=38.5px, description width=671.5px (46.63vw), gap, metadata col */}
+      {/* Figma: desc ends at 710px, metadata starts at 845px */}
       <div style={{
         display: "grid",
-        gridTemplateColumns: "2.67% 56.01% 1fr",
+        gridTemplateColumns: "38.5px 46.63% 12.05% 1fr",
         paddingTop: "84px",
         paddingBottom: "6rem",
         alignItems: "start",
+        overflow: "hidden",
       }}>
         <div />
-        {/* Description: 46.63% wide (671.5/1440), stays in left portion */}
         <p style={{
-          fontSize: "28px",
+          fontSize: "clamp(16px, 1.94vw, 28px)",
           fontWeight: 400,
-          lineHeight: 1.4,
+          lineHeight: "normal",
           color: "#000",
           margin: 0,
           whiteSpace: "pre-wrap",
-          width: "48.79vw",
+          minWidth: 0,
         }}>
           {description}
         </p>
-        {/* Next Project aligned with metadata */}
+        <div />
         {nextSlug && (
           <button onClick={goToNext} style={{
             background: "none",
@@ -136,16 +131,18 @@ export default function ArchiveProjectContent({ project, prevSlug, nextSlug }: P
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
-            gap: "0.5rem",
+            justifyContent: "space-between",
             fontSize: "24px",
             fontWeight: 400,
             color: "#000",
-            padding: 0,
-            paddingRight: "40px",
+            padding: "0 40px 0 0",
             fontFamily: "inherit",
-            whiteSpace: "nowrap",
+            width: "100%",
+            minWidth: 0,
           }}>
-            Next Project →
+            <span>Next Project</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/arrow_forward.svg" alt="" width={24} height={24} />
           </button>
         )}
       </div>

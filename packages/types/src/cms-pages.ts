@@ -9,6 +9,8 @@ export interface SiteSettingsFooter {
   instagramLabel?: string
   copyright_en?: string
   copyright_es?: string
+  newsletterLabel_en?: string
+  newsletterLabel_es?: string
 }
 
 export interface SiteSettingsNavigation {

@@ -41,6 +41,7 @@ export default function ArchiveFrameMesh({ frame, onSelect }: ArchiveFrameMeshPr
   useEffect(() => {
     if (!frame.url) return
     const loader = new THREE.TextureLoader()
+    loader.crossOrigin = "anonymous"
     loader.load(
       frame.url,
       (tex) => {
