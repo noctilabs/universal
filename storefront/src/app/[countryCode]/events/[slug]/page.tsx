@@ -127,7 +127,7 @@ export default async function EventDetailPage({ params }: Props) {
 
             {!isPastEvent && event.medusaProductId ? (
               <Link
-                href={`/events/${event.slug}/checkout/tickets`}
+                href={`/products/${event.slug}`}
                 className="block w-full bg-ui-bg-interactive text-center py-3 px-6 rounded-lg font-semibold hover:bg-ui-bg-interactive-hover transition-colors"
               >
                 Get Tickets
