@@ -108,5 +108,6 @@ export interface EventDetail extends EventListItem {
     address?: string;
     gallery?: string[];
     seo?: SEO;
+    ticketTypes?: Array<{ id: string; label: string; price: number; currency: string }>;
 }
 //# sourceMappingURL=event.d.ts.map

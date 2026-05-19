@@ -31,7 +31,7 @@ const toVw = (px: number) => `${((px / 1440) * 100).toFixed(3)}vw`
 const FALLBACK_ROWS: AgendaRowData[] = [
   {
     rowId: "e1",
-    href: "/events",
+    href: "/events/e1/checkout/tickets",
     items: [
       { text: "CREATURA",     leftPx: 35,   topPx: 6, size: "large" },
       { text: "EXP. NO. 01",  leftPx: 732,  topPx: 6, size: "large" },
@@ -40,7 +40,7 @@ const FALLBACK_ROWS: AgendaRowData[] = [
   },
   {
     rowId: "e2",
-    href: "/events",
+    href: "/events/e2/checkout/tickets",
     items: [
       { text: "NOCHE OSCURA",      leftPx: 35,  topPx: 6, size: "large" },
       { text: "03 OCT, 2026\n08:30 PM", leftPx: 587, topPx: 6, size: "small" },
@@ -49,7 +49,7 @@ const FALLBACK_ROWS: AgendaRowData[] = [
   },
   {
     rowId: "e3",
-    href: "/events",
+    href: "/events/e3/checkout/tickets",
     items: [
       { text: "SUSETTE KOK",   leftPx: 35,   topPx: 6, size: "large" },
       { text: "SCHAT (TESORO)", leftPx: 587,  topPx: 6, size: "large" },
@@ -58,7 +58,7 @@ const FALLBACK_ROWS: AgendaRowData[] = [
   },
   {
     rowId: "e4",
-    href: "/events",
+    href: "/events/e4/checkout/tickets",
     items: [
       { text: "03 OCT, 2026\n08:30 PM", leftPx: 35,  topPx: 7, size: "small" },
       { text: "SOFÍA CÓRDOBA",          leftPx: 311, topPx: 6, size: "large" },
@@ -108,7 +108,7 @@ export default function AgendaContent({ cmsData }: AgendaContentProps) {
       )}
       <div className="agenda-list">
         {rows.map((row) => (
-          <LocalizedClientLink key={row.rowId} href={row.href ?? "/events"} className="block">
+          <LocalizedClientLink key={row.rowId} href={row.href ?? `/events/${row.rowId}/checkout/tickets`} className="block">
             <div className="agenda-row">
               {row.items.map((item, i) => (
                 <span
