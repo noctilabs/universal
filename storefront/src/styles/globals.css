@@ -223,4 +223,47 @@ body::-webkit-scrollbar {
   .nav-wrapper-fixed {
     @apply fixed bottom-0 left-0 right-0 z-50 w-full flex justify-center px-4 small:px-6 pb-10;
   }
+
+  /* Event Checkout */
+  .event-checkout-shell {
+    @apply relative min-h-screen w-full bg-[#cdcdcd];
+    font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  }
+
+  .event-checkout-divider {
+    @apply w-full border-t border-black;
+  }
+
+  .event-checkout-input {
+    @apply w-full bg-[#d9d9d9] border border-black px-4 flex items-end pb-3;
+    height: 81px;
+  }
+
+  .event-checkout-input-label {
+    @apply uppercase text-black/50 text-[18px] leading-none;
+    font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  }
+
+  .event-checkout-ticket-card {
+    @apply bg-[#d9d9d9] flex items-start justify-between px-3 py-4;
+    height: 108px;
+  }
+
+  .event-checkout-qty-control {
+    @apply bg-[#cfcece] flex items-center justify-between px-3;
+    height: 55px;
+    width: 134px;
+  }
+
+  .event-checkout-continue-btn {
+    @apply bg-black text-white uppercase flex items-center gap-2 px-4;
+    height: 51px;
+    font-family: "Neue Haas Grotesk Display Std", sans-serif;
+    font-size: 24px;
+  }
+
+  .event-checkout-checkbox-row {
+    @apply flex items-center gap-3 uppercase text-black text-[18px];
+    font-family: "Neue Haas Grotesk Display Std", sans-serif;
+  }
 }
