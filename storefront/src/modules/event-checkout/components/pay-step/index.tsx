@@ -81,7 +81,11 @@ export default function PayStep() {
       {/* Navigation */}
       <div className="flex justify-between items-center">
         <button
-          onClick={() => router.back()}
+          onClick={() => {
+            const qs = new URLSearchParams(searchParams.toString())
+            Object.entries(form).forEach(([k, v]) => qs.set(k, v))
+            router.push(`/${params.countryCode}/events/${params.slug}/checkout/register?${qs.toString()}`)
+          }}
           className="uppercase text-black text-[18px] font-neue-haas underline underline-offset-4"
         >
           ← Back
