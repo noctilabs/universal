@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter, useParams } from "next/navigation"
+import { useRouter, useParams, useSearchParams } from "next/navigation"
 import ContinueButton from "../continue-button"
 
 export type TicketType = {
@@ -20,11 +20,12 @@ type TicketStepProps = {
 export default function TicketStep({ ticketTypes }: TicketStepProps) {
   const router = useRouter()
   const params = useParams<{ countryCode: string; slug: string }>()
+  const searchParams = useSearchParams()
   const [quantities, setQuantities] = useState<Quantities>(
-    Object.fromEntries(ticketTypes.map((t) => [t.id, 1]))
+    Object.fromEntries(ticketTypes.map((t) => [t.id, Number(searchParams.get(t.id) ?? 1)]))
   )
-  const [discountOpen, setDiscountOpen] = useState(false)
-  const [discountCode, setDiscountCode] = useState("")
+  const [discountOpen, setDiscountOpen] = useState(Boolean(searchParams.get("discount")))
+  const [discountCode, setDiscountCode] = useState(searchParams.get("discount") ?? "")
 
   const adjust = (id: string, delta: number) => {
     setQuantities((prev) => ({
