@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { getEvent } from "sanity/lib/fetch"
+import { getEvent } from "@/sanity/lib/fetch"
 import TicketStep, { type TicketType } from "@modules/event-checkout/components/ticket-step"
 
 export const metadata = { title: "Tickets" }
