@@ -223,7 +223,7 @@ export const agendaPageQuery = groq`
   *[_type == "agendaPage"][0] {
     "rows": rows[] {
       rowId,
-      href,
+      "eventSlug": event->slug.current,
       "items": items[] {
         text,
         leftPx,

@@ -13,11 +13,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "href",
-      title: "Link Target",
-      type: "string",
-      description: "Path to link to when clicking this row (e.g. /events).",
-      initialValue: "/events",
+      name: "event",
+      title: "Event",
+      type: "reference",
+      to: [{ type: "event" }],
+      description: "The event this row links to. Clicking the row goes to that event's ticket checkout.",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -32,15 +32,16 @@ export default defineType({
   preview: {
     select: {
       rowId: "rowId",
+      eventTitle: "event.title",
       items: "items",
     },
-    prepare({ rowId, items }) {
+    prepare({ rowId, eventTitle, items }) {
       const titles = (items ?? [])
         .filter((i: { size?: string }) => i.size === "large")
         .map((i: { text?: string }) => i.text?.split("\n")[0])
         .join(" / ")
       return {
-        title: `Row ${rowId}`,
+        title: eventTitle ? `Row ${rowId} → ${eventTitle}` : `Row ${rowId}`,
         subtitle: titles || "(no items)",
       }
     },
