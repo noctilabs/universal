@@ -73,42 +73,36 @@ export default function RegisterStep() {
       {/* Checkboxes */}
       <div className="flex flex-col gap-3 mb-8">
         <label className="event-checkout-checkbox-row cursor-pointer">
-          <div
-            className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20"
-            onClick={() => setTermsAccepted((v) => !v)}
-          >
-            {termsAccepted && (
-              <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-                <path d="M1 5L5 9L12 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            )}
-          </div>
           <input
             type="checkbox"
             className="sr-only"
             checked={termsAccepted}
             onChange={(e) => setTermsAccepted(e.target.checked)}
           />
-          I AGREE TO THE TERMS AND CONDITIONS
-        </label>
-
-        <label className="event-checkout-checkbox-row cursor-pointer">
-          <div
-            className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20"
-            onClick={() => setNewsletterAccepted((v) => !v)}
-          >
-            {newsletterAccepted && (
+          <div className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20">
+            {termsAccepted && (
               <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
                 <path d="M1 5L5 9L12 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             )}
           </div>
+          I AGREE TO THE TERMS AND CONDITIONS
+        </label>
+
+        <label className="event-checkout-checkbox-row cursor-pointer">
           <input
             type="checkbox"
             className="sr-only"
             checked={newsletterAccepted}
             onChange={(e) => setNewsletterAccepted(e.target.checked)}
           />
+          <div className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20">
+            {newsletterAccepted && (
+              <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
+                <path d="M1 5L5 9L12 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            )}
+          </div>
           I AGREE TO SUBSCRIBE ME TO NEWSLETTER
         </label>
       </div>
