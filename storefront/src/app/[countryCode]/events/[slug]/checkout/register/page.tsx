@@ -10,7 +10,7 @@ export default function RegisterPage() {
           <li><span className="leading-none">REGISTER</span></li>
         </ol>
       </div>
-      <hr className="event-checkout-divider mt-[44px]" />
+      <hr className="event-checkout-divider mt-[16px]" />
       <RegisterStep />
     </>
   )

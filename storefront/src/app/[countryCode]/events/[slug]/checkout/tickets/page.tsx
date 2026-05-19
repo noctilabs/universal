@@ -33,7 +33,7 @@ export default async function TicketsPage({ params }: Props) {
           <li><span className="leading-none">TICKETS</span></li>
         </ol>
       </div>
-      <hr className="event-checkout-divider mt-[44px]" />
+      <hr className="event-checkout-divider mt-[16px]" />
       <TicketStep ticketTypes={ticketTypes} />
     </>
   )
