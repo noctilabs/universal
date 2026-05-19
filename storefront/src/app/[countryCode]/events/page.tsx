@@ -28,7 +28,7 @@ export default async function EventsPage() {
           {events.map((event) => (
             <Link
               key={event._id}
-              href={`/events/${event.slug}`}
+              href={`/events/${event.slug}/checkout/tickets`}
               className="group border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
             >
               {event.featuredImage && (
