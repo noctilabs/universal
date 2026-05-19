@@ -20,15 +20,15 @@ export default function RegisterStep() {
   const searchParams = useSearchParams()
 
   const [form, setForm] = useState<FormState>({
-    name: "",
-    lastName: "",
-    country: "",
-    city: "",
-    email: "",
-    phone: "",
+    name: searchParams.get("name") ?? "",
+    lastName: searchParams.get("lastName") ?? "",
+    country: searchParams.get("country") ?? "",
+    city: searchParams.get("city") ?? "",
+    email: searchParams.get("email") ?? "",
+    phone: searchParams.get("phone") ?? "",
   })
-  const [termsAccepted, setTermsAccepted] = useState(false)
-  const [newsletterAccepted, setNewsletterAccepted] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState(searchParams.get("terms") === "true")
+  const [newsletterAccepted, setNewsletterAccepted] = useState(searchParams.get("newsletter") === "true")
 
   const set = (field: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -44,6 +44,7 @@ export default function RegisterStep() {
     if (!canContinue) return
     const qs = new URLSearchParams(searchParams.toString())
     Object.entries(form).forEach(([k, v]) => qs.set(k, v))
+    qs.set("terms", String(termsAccepted))
     qs.set("newsletter", String(newsletterAccepted))
     router.push(
       `/${params.countryCode}/events/${params.slug}/checkout/pay?${qs.toString()}`

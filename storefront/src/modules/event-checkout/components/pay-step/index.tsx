@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter, useParams } from "next/navigation"
+import { useRouter, useParams, useSearchParams } from "next/navigation"
 import CheckoutInput from "../checkout-input"
 import ContinueButton from "../continue-button"
 
@@ -15,12 +15,13 @@ type PayFormState = {
 export default function PayStep() {
   const router = useRouter()
   const params = useParams<{ countryCode: string; slug: string }>()
+  const searchParams = useSearchParams()
 
   const [form, setForm] = useState<PayFormState>({
-    cardNumber: "",
-    cvv: "",
-    expiryDate: "",
-    nameOnCard: "",
+    cardNumber: searchParams.get("cardNumber") ?? "",
+    cvv: searchParams.get("cvv") ?? "",
+    expiryDate: searchParams.get("expiryDate") ?? "",
+    nameOnCard: searchParams.get("nameOnCard") ?? "",
   })
 
   const set = (field: keyof PayFormState) =>
@@ -28,6 +29,8 @@ export default function PayStep() {
       setForm((prev) => ({ ...prev, [field]: e.target.value }))
 
   const handleContinue = () => {
+    const qs = new URLSearchParams(searchParams.toString())
+    Object.entries(form).forEach(([k, v]) => qs.set(k, v))
     router.push(`/${params.countryCode}/events/${params.slug}?booked=1`)
   }
 
