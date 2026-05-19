@@ -7,7 +7,7 @@ import ContinueButton from "../continue-button"
 
 type PayFormState = {
   cardNumber: string
-  cardNumber2: string
+  cvv: string
   expiryDate: string
   nameOnCard: string
 }
@@ -18,7 +18,7 @@ export default function PayStep() {
 
   const [form, setForm] = useState<PayFormState>({
     cardNumber: "",
-    cardNumber2: "",
+    cvv: "",
     expiryDate: "",
     nameOnCard: "",
   })
@@ -48,13 +48,13 @@ export default function PayStep() {
         />
       </div>
 
-      {/* Card number + Expiry — split row */}
+      {/* CVV + EXPIRY — split row */}
       <div className="grid grid-cols-2 gap-x-[54px] mb-4">
         <CheckoutInput
-          label="CARD NUMBER"
-          name="cardNumber2"
-          value={form.cardNumber2}
-          onChange={set("cardNumber2")}
+          label="CVV"
+          name="cvv"
+          value={form.cvv}
+          onChange={set("cvv")}
         />
         <CheckoutInput
           label="EXPIRY DATE"
@@ -75,8 +75,14 @@ export default function PayStep() {
         />
       </div>
 
-      {/* Continue */}
-      <div className="flex justify-end">
+      {/* Navigation */}
+      <div className="flex justify-between items-center">
+        <button
+          onClick={() => router.back()}
+          className="uppercase text-black text-[18px] font-neue-haas underline underline-offset-4"
+        >
+          ← Back
+        </button>
         <ContinueButton onClick={handleContinue} />
       </div>
     </div>

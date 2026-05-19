@@ -107,8 +107,14 @@ export default function RegisterStep() {
         </label>
       </div>
 
-      {/* Continue */}
-      <div className="flex justify-end">
+      {/* Navigation */}
+      <div className="flex justify-between items-center">
+        <button
+          onClick={() => router.back()}
+          className="uppercase text-black text-[18px] font-neue-haas underline underline-offset-4"
+        >
+          ← Back
+        </button>
         <ContinueButton onClick={handleContinue} disabled={!canContinue} />
       </div>
     </div>
