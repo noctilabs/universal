@@ -53,6 +53,12 @@ export const eventBySlugQuery = groq`
     tags,
     medusaProductId,
     medusaVariantId,
+    "ticketTypes": ticketTypes[] {
+      id,
+      label,
+      price,
+      currency
+    },
     seo
   }
 `

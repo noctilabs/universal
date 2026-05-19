@@ -97,6 +97,61 @@ export default defineType({
       initialValue: "usd",
     }),
     defineField({
+      name: "ticketTypes",
+      title: "Ticket Types",
+      type: "array",
+      description: "Define the available ticket tiers for this event. If empty, falls back to a single ticket using the Ticket Price field above.",
+      of: [
+        {
+          type: "object",
+          name: "ticketType",
+          title: "Ticket Type",
+          fields: [
+            defineField({
+              name: "id",
+              title: "ID",
+              type: "string",
+              description: "Unique key used in URLs (e.g. 'standard', 'premium'). Lowercase, no spaces.",
+              validation: (Rule) => Rule.required().regex(/^[a-z0-9-]+$/, { name: "slug-safe" }),
+            }),
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "string",
+              description: "Display name shown to the customer (e.g. 'STANDARD TICKET')",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "price",
+              title: "Price",
+              type: "number",
+              validation: (Rule) => Rule.required().min(0),
+            }),
+            defineField({
+              name: "currency",
+              title: "Currency",
+              type: "string",
+              options: {
+                list: [
+                  { title: "USD", value: "USD" },
+                  { title: "EUR", value: "EUR" },
+                  { title: "GBP", value: "GBP" },
+                ],
+              },
+              initialValue: "USD",
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: { label: "label", price: "price", currency: "currency" },
+            prepare({ label, price, currency }: { label: string; price: number; currency: string }) {
+              return { title: label, subtitle: `${currency} ${price}` }
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "featuredImage",
       title: "Featured Image",
       type: "image",
