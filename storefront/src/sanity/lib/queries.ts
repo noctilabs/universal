@@ -224,6 +224,8 @@ export const agendaPageQuery = groq`
     "rows": rows[] {
       rowId,
       "eventSlug": event->slug.current,
+      "hoverImageUrl": hoverImage.asset->url,
+      hoverImagePosition,
       "items": items[] {
         text,
         leftPx,

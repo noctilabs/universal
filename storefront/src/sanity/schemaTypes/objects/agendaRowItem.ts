@@ -32,7 +32,7 @@ export default defineType({
       title: "Hover Image",
       type: "image",
       options: { hotspot: true },
-      description: "Image that appears when hovering over this item.",
+      description: "Image that appears when hovering over this item. Prefer setting the hover image on the row instead.",
     }),
     defineField({
       name: "hoverImagePosition",

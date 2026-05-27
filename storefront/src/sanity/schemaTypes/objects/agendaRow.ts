@@ -21,6 +21,30 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "hoverImage",
+      title: "Hover Image",
+      type: "image",
+      options: { hotspot: true },
+      description: "Image shown when hovering anywhere on this row.",
+    }),
+    defineField({
+      name: "hoverImagePosition",
+      title: "Hover Image Position",
+      type: "string",
+      options: {
+        list: [
+          { title: "Above", value: "above" },
+          { title: "Right", value: "right" },
+          { title: "Below", value: "below" },
+          { title: "Left", value: "left" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "above",
+      description: "Where to show the image relative to the cursor.",
+      hidden: ({ parent }) => !parent?.hoverImage,
+    }),
+    defineField({
       name: "items",
       title: "Items",
       type: "array",

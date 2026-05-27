@@ -18,9 +18,9 @@ export default function CheckoutInput({
   className = "",
 }: CheckoutInputProps) {
   return (
-    <div className={`event-checkout-input flex-col justify-end ${className}`}>
+    <div className={`event-checkout-input ${className}`}>
       <label htmlFor={name} className="event-checkout-input-label">
-        {value ? "" : label}
+        {label}
       </label>
       <input
         id={name}
@@ -29,7 +29,7 @@ export default function CheckoutInput({
         value={value}
         onChange={onChange}
         required={required}
-        className="bg-transparent outline-none text-black text-[18px] uppercase w-full font-neue-haas"
+        className="mt-auto bg-transparent outline-none text-black text-[18px] uppercase w-full font-neue-haas"
         style={{ fontFamily: "Neue Haas Grotesk Display Std, sans-serif" }}
       />
     </div>

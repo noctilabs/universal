@@ -35,51 +35,53 @@ export default function PayStep() {
   }
 
   return (
-    <div className="px-[80px] py-[44px]">
-      <p className="uppercase text-black text-[28px] font-neue-haas mb-8">
-        YOU ALMOST HAVE YOUR TICKETS
-      </p>
+    <div className="event-checkout-step">
+      <div className="event-checkout-step-body">
+        <p className="uppercase text-black text-[28px] font-neue-haas mb-8">
+          YOU ALMOST HAVE YOUR TICKETS
+        </p>
 
-      {/* Card number — full width */}
-      <div className="mb-4">
-        <CheckoutInput
-          label="CARD NUMBER"
-          name="cardNumber"
-          value={form.cardNumber}
-          onChange={set("cardNumber")}
-          className="w-full"
-        />
-      </div>
+        {/* Card number — full width */}
+        <div className="mb-4">
+          <CheckoutInput
+            label="CARD NUMBER"
+            name="cardNumber"
+            value={form.cardNumber}
+            onChange={set("cardNumber")}
+            className="w-full"
+          />
+        </div>
 
-      {/* CVV + EXPIRY — split row */}
-      <div className="grid grid-cols-2 gap-x-[54px] mb-4">
-        <CheckoutInput
-          label="CVV"
-          name="cvv"
-          value={form.cvv}
-          onChange={set("cvv")}
-        />
-        <CheckoutInput
-          label="EXPIRY DATE"
-          name="expiryDate"
-          value={form.expiryDate}
-          onChange={set("expiryDate")}
-        />
-      </div>
+        {/* CVV + EXPIRY — split row */}
+        <div className="grid grid-cols-2 gap-x-[54px] mb-4">
+          <CheckoutInput
+            label="CVV"
+            name="cvv"
+            value={form.cvv}
+            onChange={set("cvv")}
+          />
+          <CheckoutInput
+            label="EXPIRY DATE"
+            name="expiryDate"
+            value={form.expiryDate}
+            onChange={set("expiryDate")}
+          />
+        </div>
 
-      {/* Name on card — full width */}
-      <div className="mb-8">
-        <CheckoutInput
-          label="NAME ON CARD"
-          name="nameOnCard"
-          value={form.nameOnCard}
-          onChange={set("nameOnCard")}
-          className="w-full"
-        />
+        {/* Name on card — full width */}
+        <div>
+          <CheckoutInput
+            label="NAME ON CARD"
+            name="nameOnCard"
+            value={form.nameOnCard}
+            onChange={set("nameOnCard")}
+            className="w-full"
+          />
+        </div>
       </div>
 
       {/* Navigation */}
-      <div className="flex justify-between items-center">
+      <div className="event-checkout-step-footer event-checkout-step-footer--split">
         <button
           onClick={() => {
             const qs = new URLSearchParams(searchParams.toString())

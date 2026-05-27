@@ -52,64 +52,66 @@ export default function RegisterStep() {
   }
 
   return (
-    <div className="px-[80px] py-[44px]">
-      {/* Row 1: Name + Last Name */}
-      <div className="grid grid-cols-2 gap-x-[54px] mb-4">
-        <CheckoutInput label="NAME" name="name" value={form.name} onChange={set("name")} required />
-        <CheckoutInput label="LAST NAME" name="lastName" value={form.lastName} onChange={set("lastName")} required />
-      </div>
+    <div className="event-checkout-step">
+      <div className="event-checkout-step-body">
+        {/* Row 1: Name + Last Name */}
+        <div className="grid grid-cols-2 gap-x-[54px] mb-4">
+          <CheckoutInput label="NAME" name="name" value={form.name} onChange={set("name")} required />
+          <CheckoutInput label="LAST NAME" name="lastName" value={form.lastName} onChange={set("lastName")} required />
+        </div>
 
-      {/* Row 2: Country + City */}
-      <div className="grid grid-cols-2 gap-x-[54px] mb-4">
-        <CheckoutInput label="COUNTRY" name="country" value={form.country} onChange={set("country")} />
-        <CheckoutInput label="CITY" name="city" value={form.city} onChange={set("city")} />
-      </div>
+        {/* Row 2: Country + City */}
+        <div className="grid grid-cols-2 gap-x-[54px] mb-4">
+          <CheckoutInput label="COUNTRY" name="country" value={form.country} onChange={set("country")} />
+          <CheckoutInput label="CITY" name="city" value={form.city} onChange={set("city")} />
+        </div>
 
-      {/* Row 3: Email + Phone */}
-      <div className="grid grid-cols-2 gap-x-[54px] mb-8">
-        <CheckoutInput label="EMAIL" name="email" type="email" value={form.email} onChange={set("email")} required />
-        <CheckoutInput label="PHONE" name="phone" type="tel" value={form.phone} onChange={set("phone")} />
-      </div>
+        {/* Row 3: Email + Phone */}
+        <div className="grid grid-cols-2 gap-x-[54px] mb-8">
+          <CheckoutInput label="EMAIL" name="email" type="email" value={form.email} onChange={set("email")} required />
+          <CheckoutInput label="PHONE" name="phone" type="tel" value={form.phone} onChange={set("phone")} />
+        </div>
 
-      {/* Checkboxes */}
-      <div className="flex flex-col gap-3 mb-8">
-        <label className="event-checkout-checkbox-row cursor-pointer">
-          <input
-            type="checkbox"
-            className="sr-only"
-            checked={termsAccepted}
-            onChange={(e) => setTermsAccepted(e.target.checked)}
-          />
-          <div className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20">
-            {termsAccepted && (
-              <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-                <path d="M1 5L5 9L12 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            )}
-          </div>
-          I AGREE TO THE TERMS AND CONDITIONS
-        </label>
+        {/* Checkboxes */}
+        <div className="flex flex-col gap-3">
+          <label className="event-checkout-checkbox-row cursor-pointer">
+            <input
+              type="checkbox"
+              className="sr-only"
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
+            />
+            <div className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20">
+              {termsAccepted && (
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
+                  <path d="M1 5L5 9L12 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+            </div>
+            I AGREE TO THE TERMS AND CONDITIONS
+          </label>
 
-        <label className="event-checkout-checkbox-row cursor-pointer">
-          <input
-            type="checkbox"
-            className="sr-only"
-            checked={newsletterAccepted}
-            onChange={(e) => setNewsletterAccepted(e.target.checked)}
-          />
-          <div className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20">
-            {newsletterAccepted && (
-              <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-                <path d="M1 5L5 9L12 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            )}
-          </div>
-          I AGREE TO SUBSCRIBE ME TO NEWSLETTER
-        </label>
+          <label className="event-checkout-checkbox-row cursor-pointer">
+            <input
+              type="checkbox"
+              className="sr-only"
+              checked={newsletterAccepted}
+              onChange={(e) => setNewsletterAccepted(e.target.checked)}
+            />
+            <div className="bg-[#d9d9d9] size-[21px] flex-shrink-0 flex items-center justify-center border border-black/20">
+              {newsletterAccepted && (
+                <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
+                  <path d="M1 5L5 9L12 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+            </div>
+            I AGREE TO SUBSCRIBE ME TO NEWSLETTER
+          </label>
+        </div>
       </div>
 
       {/* Navigation */}
-      <div className="flex justify-between items-center">
+      <div className="event-checkout-step-footer event-checkout-step-footer--split">
         <button
           onClick={() => {
             const qs = new URLSearchParams(searchParams.toString())

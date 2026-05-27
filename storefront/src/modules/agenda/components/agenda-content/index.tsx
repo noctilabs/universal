@@ -16,7 +16,26 @@ type AgendaRowItemData = {
 type AgendaRowData = {
   rowId: string
   eventSlug?: string | null
+  hoverImageUrl?: string
+  hoverImagePosition?: "above" | "right" | "below" | "left"
   items: AgendaRowItemData[]
+}
+
+function getRowHover(row: AgendaRowData): {
+  url?: string
+  position: "above" | "right" | "below" | "left"
+} {
+  if (row.hoverImageUrl) {
+    return { url: row.hoverImageUrl, position: row.hoverImagePosition ?? "above" }
+  }
+  const itemWithImage = row.items.find((item) => item.hoverImageUrl)
+  if (itemWithImage?.hoverImageUrl) {
+    return {
+      url: itemWithImage.hoverImageUrl,
+      position: itemWithImage.hoverImagePosition ?? "above",
+    }
+  }
+  return { position: "above" }
 }
 
 type AgendaPageData = {
@@ -107,21 +126,25 @@ export default function AgendaContent({ cmsData }: AgendaContentProps) {
         </div>
       )}
       <div className="agenda-list">
-        {rows.map((row) => (
+        {rows.map((row) => {
+          const rowHover = getRowHover(row)
+          return (
           <LocalizedClientLink key={row.rowId} href={`/events/${row.eventSlug ?? row.rowId}/checkout/tickets`} className="block">
-            <div className="agenda-row">
+            <div
+              className="agenda-row"
+              onMouseEnter={() => {
+                if (rowHover.url) {
+                  setHoverImage(rowHover.url)
+                  setHoverPosition(rowHover.position)
+                }
+              }}
+              onMouseLeave={() => setHoverImage(null)}
+            >
               {row.items.map((item, i) => (
                 <span
                   key={i}
                   className={item.size === "large" ? "agenda-title" : "agenda-date"}
                   style={{ left: toVw(item.leftPx) }}
-                  onMouseEnter={() => {
-                    if (item.hoverImageUrl) {
-                      setHoverImage(item.hoverImageUrl)
-                      setHoverPosition(item.hoverImagePosition ?? "above")
-                    }
-                  }}
-                  onMouseLeave={() => setHoverImage(null)}
                 >
                   {item.text.split("\n").map((line, j, arr) => (
                     <span key={j}>
@@ -133,7 +156,8 @@ export default function AgendaContent({ cmsData }: AgendaContentProps) {
               ))}
             </div>
           </LocalizedClientLink>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
