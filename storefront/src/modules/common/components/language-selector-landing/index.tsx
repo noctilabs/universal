@@ -2,15 +2,20 @@
 
 import { useLandingLocale } from "@modules/landing/context/landing-locale-context"
 
+type LanguageSelectorLandingProps = {
+  /** "light" for dark backgrounds (default). "dark" for light backgrounds like checkout. */
+  tone?: "light" | "dark"
+}
+
 /**
  * Language selector: 18px, Neue Haas Grotesk Display Std, fontWeight 450, uppercase, lineHeight 18.
  * Toggles landing language in place (no navigation); preference is stored in client state and localStorage.
  * Used across all (main) pages.
  */
-const LanguageSelectorLanding = () => {
+const LanguageSelectorLanding = ({ tone = "light" }: LanguageSelectorLandingProps) => {
   const { locale, setLocale } = useLandingLocale()
   const isSpanish = locale === "es"
-  const textClass = "text-white"
+  const textClass = tone === "dark" ? "text-black" : "text-white"
 
   const handleSelectEsp = () => setLocale("es")
   const handleSelectEng = () => setLocale("en")

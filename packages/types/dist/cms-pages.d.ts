@@ -48,6 +48,8 @@ export interface AgendaRowItemData {
 export interface AgendaRowData {
     rowId: string;
     href: string;
+    hoverImageUrl?: string;
+    hoverImagePosition?: "above" | "right" | "below" | "left";
     items: AgendaRowItemData[];
 }
 export interface AgendaPageData {

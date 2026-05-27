@@ -234,13 +234,29 @@ body::-webkit-scrollbar {
     @apply w-full border-t border-black;
   }
 
+  .event-checkout-step {
+    @apply flex flex-col px-[80px] py-[44px];
+  }
+
+  .event-checkout-step-body {
+    min-height: 393px;
+  }
+
+  .event-checkout-step-footer {
+    @apply flex items-center justify-end;
+  }
+
+  .event-checkout-step-footer--split {
+    @apply justify-between;
+  }
+
   .event-checkout-input {
-    @apply w-full bg-[#d9d9d9] border border-black px-4 flex items-end pb-3;
+    @apply w-full bg-[#d9d9d9] border border-black px-4 flex flex-col items-start justify-start pt-3 pb-3;
     height: 81px;
   }
 
   .event-checkout-input-label {
-    @apply uppercase text-black/50 text-[18px] leading-none;
+    @apply uppercase text-black/50 text-[18px] leading-none shrink-0;
     font-family: "Neue Haas Grotesk Display Std", sans-serif;
   }
 

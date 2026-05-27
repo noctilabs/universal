@@ -44,64 +44,65 @@ export default function TicketStep({ ticketTypes }: TicketStepProps) {
   }
 
   return (
-    <div className="px-[80px] py-[44px]">
-      {/* Ticket grid: two columns */}
-      <div className="grid grid-cols-2 gap-x-[54px] mb-6">
-        {ticketTypes.map((ticket) => (
-          <div key={ticket.id} className="event-checkout-ticket-card">
-            <div>
-              <p className="uppercase text-black text-[28px] leading-none font-neue-haas">
-                {ticket.label}
-              </p>
-              <p className="uppercase text-black text-[28px] leading-none font-neue-haas mt-2">
-                {ticket.currency} {ticket.price}
-              </p>
+    <div className="event-checkout-step">
+      <div className="event-checkout-step-body">
+        {/* Ticket grid: two columns */}
+        <div className="grid grid-cols-2 gap-x-[54px] mb-6">
+          {ticketTypes.map((ticket) => (
+            <div key={ticket.id} className="event-checkout-ticket-card">
+              <div>
+                <p className="uppercase text-black text-[28px] leading-none font-neue-haas">
+                  {ticket.label}
+                </p>
+                <p className="uppercase text-black text-[28px] leading-none font-neue-haas mt-2">
+                  {ticket.currency} {ticket.price}
+                </p>
+              </div>
+              <div className="event-checkout-qty-control">
+                <button
+                  onClick={() => adjust(ticket.id, -1)}
+                  className="text-black text-[28px] leading-none w-8 text-center"
+                  aria-label="Decrease quantity"
+                >
+                  -
+                </button>
+                <span className="text-black text-[28px] leading-none">
+                  {quantities[ticket.id]}
+                </span>
+                <button
+                  onClick={() => adjust(ticket.id, 1)}
+                  className="text-black text-[28px] leading-none w-8 text-center"
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <div className="event-checkout-qty-control">
-              <button
-                onClick={() => adjust(ticket.id, -1)}
-                className="text-black text-[28px] leading-none w-8 text-center"
-                aria-label="Decrease quantity"
-              >
-                -
-              </button>
-              <span className="text-black text-[28px] leading-none">
-                {quantities[ticket.id]}
-              </span>
-              <button
-                onClick={() => adjust(ticket.id, 1)}
-                className="text-black text-[28px] leading-none w-8 text-center"
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* Discount code row */}
+        <div className="bg-[#d9d9d9] h-[59px] flex items-center justify-between px-[27.5px] w-full">
+          <button
+            onClick={() => setDiscountOpen((v) => !v)}
+            className="uppercase text-black text-[28px] font-neue-haas text-left w-full"
+          >
+            HAVE A DISCOUNT CODE?
+          </button>
+          {discountOpen && (
+            <input
+              type="text"
+              value={discountCode}
+              onChange={(e) => setDiscountCode(e.target.value)}
+              placeholder="CODE"
+              className="bg-transparent border-b border-black text-black uppercase outline-none text-[18px] font-neue-haas ml-4 w-48"
+              style={{ fontFamily: "Neue Haas Grotesk Display Std, sans-serif" }}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Discount code row */}
-      <div className="bg-[#d9d9d9] h-[59px] flex items-center justify-between px-[27.5px] mb-8 w-full">
-        <button
-          onClick={() => setDiscountOpen((v) => !v)}
-          className="uppercase text-black text-[28px] font-neue-haas text-left w-full"
-        >
-          HAVE A DISCOUNT CODE?
-        </button>
-        {discountOpen && (
-          <input
-            type="text"
-            value={discountCode}
-            onChange={(e) => setDiscountCode(e.target.value)}
-            placeholder="CODE"
-            className="bg-transparent border-b border-black text-black uppercase outline-none text-[18px] font-neue-haas ml-4 w-48"
-            style={{ fontFamily: "Neue Haas Grotesk Display Std, sans-serif" }}
-          />
-        )}
-      </div>
-
-      {/* Continue */}
-      <div className="flex justify-end">
+      <div className="event-checkout-step-footer">
         <ContinueButton onClick={handleContinue} />
       </div>
     </div>
